@@ -1,0 +1,82 @@
+body {
+background:#fff;
+font-family:Arial, sans-serif;
+}
+
+p {
+margin-bottom:20px;
+}
+
+.clearout {
+height:20px;
+clear:both;
+}
+
+#flexiselDemo1, #flexiselDemo2, #flexiselDemo3 {
+display:none;
+}
+
+.nbs-flexisel-container {
+    position:relative;
+    width:125%;
+	margin-left:-12.5%;
+}
+.nbs-flexisel-ul {
+    position:relative;
+    width:99999px;
+    margin:0px;
+    padding:0px;
+    list-style-type:none;   
+    text-align:center;  
+}
+
+.nbs-flexisel-inner {
+    overflow:hidden;
+    float:left;
+    width:100%;
+    background:ebebeb;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;  
+}
+
+.nbs-flexisel-item {
+    float:left;
+    margin:0px;
+    padding:0px;
+    cursor:pointer;
+    position:relative;
+    line-height:0px;
+}
+.nbs-flexisel-item img {
+    width: 90%;
+    cursor: pointer;
+    position: relative;
+}
+
+/*** Navigation ***/
+
+.nbs-flexisel-nav-left,
+.nbs-flexisel-nav-right {
+    width: 10%;
+    height: 350px; 
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+	background-size:45px !important;
+	top:0;
+}
+
+.nbs-flexisel-nav-left {
+    left: 10%;
+    background: rgba(63,131,220,.5) url(../icon/left-arw.png) no-repeat center;
+	background-size:45px;
+	background-size:contain;
+}
+
+.nbs-flexisel-nav-right {
+    right: 10%;
+    background: rgba(63,131,220,.5) url(../icon/right-arw.png) no-repeat center;
+	background-size:45px;
+	background-size:contain;
+}
