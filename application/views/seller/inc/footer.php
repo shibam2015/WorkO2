@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
 <div class="col-sm-3">
-<div class="foot-logo"> <img src="assets/images/logo-w.png"> </div>
+<div class="foot-logo"> <img src="<?php echo site_url('assets'); ?>/images/logo-w.png"> </div>
 </div>
 <div class="col-sm-3">
 <h3>Buyers</h3>
@@ -42,10 +42,10 @@
 <div class="container">
 <div class="col-sm-6 col-xs-12 pull-right">
 <ul>
-<li><a href="#"><img src="assets/icon/facebook.png"></a></li>
-<li><a href="#"><img src="assets/icon/instagram.png"></a></li>
-<li><a href="#"><img src="assets/icon/linkdin.png"></a></li>
-<li><a href="#"><img src="assets/icon/message.png"></a></li>
+<li><a href="#"><img src="<?php echo site_url('assets'); ?>/icon/facebook.png"></a></li>
+<li><a href="#"><img src="<?php echo site_url('assets'); ?>/icon/instagram.png"></a></li>
+<li><a href="#"><img src="<?php echo site_url('assets'); ?>/icon/linkdin.png"></a></li>
+<li><a href="#"><img src="<?php echo site_url('assets'); ?>/icon/message.png"></a></li>
 </ul>
 </div>
 <div class="col-sm-6 col-xs-12 pull-left">

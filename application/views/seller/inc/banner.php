@@ -18,12 +18,30 @@
 </div>
 <div id="seller_reg2">
 <div class="bannet-fo-holder">
+<input class="login-text" name="seller_name" id="seller_name" type="text" placeholder="Name">
+<div class="clearfix" id="error_seller_name"></div>
+</div>
+<div class="bannet-fo-holder">
+<input class="login-text" name="seller_password" id="seller_password" type="password" placeholder="Password">
+<div class="clearfix" id="error_seller_password"></div>
+</div>
+<div class="bannet-fo-holder">
+<input class="login-text" name="seller_cpassword" id="seller_cpassword" type="password" placeholder="Confirm Password">
+<div class="clearfix" id="error_seller_cpassword"></div>
+</div>
+</div>
+<div id="seller_reg3">
+<div class="bannet-fo-holder">
 <input class="login-text" name="seller_otp" id="seller_otp" type="text" placeholder="OTP">
 <div class="clearfix" id="error_seller_otp"></div>
 </div>
 </div>
-<div class="bannet-fo-holder">
+<div class="bannet-fo-holder" id="re1">
 <input class="login-btn" name="" type="button" onClick="return sellerRegister1()" value="Register">
+<div class="clearfix"></div>
+</div>
+<div class="bannet-fo-holder" id="re2">
+<input class="login-btn" name="" type="button" onClick="return sellerRegister2()" value="Register">
 <div class="clearfix"></div>
 </div>
 </div>

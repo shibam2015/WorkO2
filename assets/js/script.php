@@ -5,6 +5,8 @@
 $(function(){
   $('#finish').hide();
   $('#seller_reg2').hide();	
+  $('#seller_reg3').hide();	
+  $('#re2').hide();	
   $(".scale").imageScale({ 
   rescaleOnResize: true
 });
@@ -206,10 +208,12 @@ var login = function(){
  
 var sellerRegister1 = function()
 {
-	
-	var seller_uname    =  document.getElementById('seller_username').value ;
-	var seller_email    =  document.getElementById('seller_email').value ;
-	var seller_phone    =  document.getElementById('seller_phone').value ;
+	var seller_name      =  document.getElementById('seller_name').value ;
+	var seller_uname     =  document.getElementById('seller_username').value ;
+	var seller_email     =  document.getElementById('seller_email').value ;
+	var seller_phone     =  document.getElementById('seller_phone').value ;
+	var seller_password  =  document.getElementById('seller_password').value ;
+	var seller_cpassword =  document.getElementById('seller_cpassword').value ;	
 	
 	if (seller_uname == null || seller_uname == ""){
 	document.getElementById('error_seller_username').innerHTML = 'Username is required'; 
@@ -220,48 +224,19 @@ var sellerRegister1 = function()
 	document.getElementById('error_seller_email').innerHTML = 'Please enter a valid Email Id'; 
 	return false;
 	}else{
-	document.getElementById('error_seller_email').innerHTML = '';	
-	if (seller_phone == null || seller_phone == ""){
-	jQuery.ajax({
-	type: "POST",
-	url: "<?php echo site_url('seller/seller_reg'); ?>",
-	data: 'email='+ seller_email +'&username='+ seller_uname,
-	success: function (res) {
-	document.getElementById('error_seller_phone').innerHTML = res; 			
-	}
-	}); 	
-	}else{
+	document.getElementById('error_seller_email').innerHTML = '';
 	document.getElementById('seller_reg1').style.display = 'none' ;
 	document.getElementById('seller_reg2').style.display = 'block' ;
-	}
-	}
-	}
-//END	
-} 
- 
-var sellerRegister45 = function()
-{
-	
-	var seller_name      =  document.getElementById('seller_name').value ;
-	var seller_email     =  document.getElementById('seller_email').value ;
-	var seller_password  =  document.getElementById('seller_password').value ;
-	var seller_cpassword =  document.getElementById('seller_cpassword').value ;	
-	
 	if (seller_name == null || seller_name == "") {
 	document.getElementById('error_seller_name').innerHTML = 'Name is required'; 
 	return false;
 	}else{
 	document.getElementById('error_seller_name').innerHTML = ''; 	
-	if (seller_email == null || seller_email == "" || !seller_email.match(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/)) {
-	document.getElementById('error_seller_email').innerHTML = 'Please enter a valid Email Id'; 
-	return false;
-	}else{
-	document.getElementById('error_seller_email').innerHTML = '';	
 	if (seller_password == null || seller_password == ""){
 	document.getElementById('error_seller_password').innerHTML = 'Password is required'; 
 	return false;
 	}else{
-	document.getElementById('error_seller_password').innerHTML = ''; 	
+	document.getElementById('error_seller_password').innerHTML = '';
 	if (seller_cpassword == null || seller_cpassword == ""){
 	document.getElementById('error_seller_cpassword').innerHTML = 'Confirm password is required'; 
 	return false;
@@ -271,12 +246,74 @@ var sellerRegister45 = function()
 	document.getElementById('error_seller_cpassword').innerHTML = 'Both password should match'; 
 	return false;
 	}else{
-	document.getElementById('error_seller_cpassword').innerHTML = ''; 	
+	document.getElementById('error_seller_cpassword').innerHTML = ''; 
+	if (seller_phone == null || seller_phone == ""){
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/seller_reg'); ?>",
+	data: 'seller_name='+ seller_name + '&seller_email='+ seller_email +'&seller_uname='+ seller_uname + '&seller_password='+ seller_password,
+	success: function (res) {
+	if(res == 'OPPS !! user already exsit'){	
+	document.getElementById('seller_reg2').style.display = 'none' ;
+	document.getElementById('seller_reg1').style.display = 'block' ;
+	document.getElementById('error_seller_phone').innerHTML = res; 	
+	}else{
+	document.getElementById('error_seller_cpassword').innerHTML = res; 
+	window.setTimeout(function() { window.location.href = '<?php echo site_url('seller'); ?>';}, 5000);		
 	}
-	} 
 	}
-	} 
+	}); 	
+	}else{
+	document.getElementById('seller_reg1').style.display = 'none' ;
+	document.getElementById('seller_reg2').style.display = 'none' ;
+	document.getElementById('seller_reg3').style.display = 'block' ;
+	document.getElementById('re1').style.display = 'none' ;
+	document.getElementById('re2').style.display = 'block' ;
+	}	
+	}	
+	}	
+	}
+	}
+	}
 	}
 //END	
+} 
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+var sellerRegister2 = function()
+{
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+var seller_name      =  document.getElementById('seller_name').value ;
+var seller_uname     =  document.getElementById('seller_username').value ;
+var seller_email     =  document.getElementById('seller_email').value ;
+var seller_phone     =  document.getElementById('seller_phone').value ;
+var seller_password  =  document.getElementById('seller_password').value ;
+var seller_cpassword =  document.getElementById('seller_cpassword').value ;	
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/seller_reg'); ?>",
+	data: {
+	seller_name : seller_name,
+	seller_uname : seller_uname,
+	seller_email : seller_email,
+	seller_phone : seller_phone,
+	seller_password : seller_password,
+	},
+	success: function (res) {
+	if(res == 'OPPS !! user already exsit'){	
+	document.getElementById('seller_reg2').style.display = 'none' ;
+	document.getElementById('seller_reg3').style.display = 'none' ;
+	document.getElementById('seller_reg1').style.display = 'block' ;
+	document.getElementById('error_seller_phone').innerHTML = res; 	
+	}else{
+	document.getElementById('error_seller_otp').innerHTML = res;
+	window.setTimeout(function() { window.location.href = '<?php echo site_url('seller'); ?>';}, 5000); 		
+	}
+	}
+}); 
+//END		
 }
+
+
 </script>

@@ -1328,3 +1328,256 @@ span.card {
 	font-size: 16px;
 	color: #666;
 }
+
+.buyer-sec {
+	margin: 30px 0;
+}
+.buyer-left-holder {
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+.buyer-left-holder h1 {
+	font-size: 20px;
+	color: #000;
+	margin-top: 0;
+}
+.buyer-left-holder h4 {
+	font-size: 16px;
+	color: #666;
+	margin-top: 6px;
+}
+.buyer-left-holder h1 span {
+	margin-left: 6px;
+	position: relative;
+}
+.buyer-left-holder h1 span .fa {
+	color: #999;
+}
+.buyer-tag {
+	padding: 6px;
+	color: #fff;
+	font-size: 12px;
+	background: #333;
+	position: absolute;
+	top: -45px;
+	left: -15px;
+	width: 300px;
+	display: none;
+	box-shadow: 0 0 5px #666;
+}
+.buyer-left-holder h1 span:hover .buyer-tag {
+	display: block;
+}
+.buyer-left-holder h1 span .sub-nav-triangle {
+	opacity: 0;
+	visibility: hidden;
+}
+.buyer-left-holder h1 span:hover .sub-nav-triangle {
+	opacity: 1;
+	visibility: visible;
+	bottom: 0;
+	top: -10px;
+	left: 50%;
+}
+.sub-nav-triangle {
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+	border-top: 15px solid #333;
+	z-index: 203;
+}
+.show-1 {
+	float: right;
+	color: #4264aa;
+	font-size: 15px;
+	cursor: pointer;
+}
+.des-area-1 {
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+}
+.hide-1 {
+	color: #333;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.bot-area {
+	margin: 10px 0;
+	width: 100%;
+	text-align: right;
+}
+.update-btn {
+	color: #fff;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	background: #4469a8;
+	cursor:pointer;
+}
+.des-holder {
+	margin: 5px 0;
+}
+.show-2 {
+	float: right;
+	color: #4264aa;
+	font-size: 15px;
+	cursor: pointer;
+}
+.des-area-2 {
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+}
+.hide-2 {
+	color: #333;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.no-border {
+	border-top: 0;
+}
+.buyer-left-holder ul {
+	margin: 0;
+	padding: 0;
+}
+.buyer-left-holder ul li {
+	list-style: none;
+	padding: 0;
+	font-size: 18px;
+}
+.buyer-left-holder ul li .fa {
+	margin-right: 6px;
+}
+.buyer-left-holder ul li a {
+	color: #023f85;
+	text-decoration: none;
+	outline: none;
+}
+.buyer-left-holder ul li a:hover {
+	color: #0261cb;
+	text-decoration: none;
+	outline: none;
+}
+.show-3 {
+	float: right;
+	color: #4264aa;
+	font-size: 15px;
+	cursor: pointer;
+}
+.des-area-3 {
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+}
+.hide-3 {
+	color: #333;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.update-btn2 {
+	color: #fff;
+	font-size: 16px;
+	padding: 5px 20px;
+	display: inline-block;
+	background: #4469a8;
+	cursor:pointer;
+}
+.des-holder-lft {
+	float: left;
+	width: 48%;
+}
+.des-holder-rht {
+	float: right;
+	width: 48%;
+}
+.show-4, .show-5, .show-6, .show-7 {
+	float: right;
+	color: #4264aa;
+	font-size: 15px;
+	cursor: pointer;
+}
+.des-area-4, .des-area-5, .des-area-6, .des-area-7 {
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+}
+.hide-4, .hide-5, .hide-6, .hide-7 {
+	color: #333;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
+.profile-img {
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	margin: 0 auto;
+	border-radius: 100px;
+	border: 5px solid #6aa326;
+}
+.buyer-right-holder {
+	border: 1px solid #ccc;
+	padding: 20px;
+}
+.buyer-right-holder h1 {
+	font-size: 20px;
+	color: #000;
+	margin-top: 0;
+}
+.buyer-right-holder h4 {
+	font-size: 16px;
+	color: #666;
+	text-align: center;
+}
+.top-mar-1 {
+	margin-top: 20px;
+}
+.buyer-right-img-holder {
+	width: 60%;
+	margin: 5% auto 2%;
+}
+.buyer-right-img {
+	margin-bottom: 20px;
+}
+.buyer-right-btn {
+	text-align: center;
+}
+.buyer-btn {
+	background: #6aa326 none repeat scroll 0 0;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 19px;
+	padding: 6px 20px;
+	text-decoration: none;
+	outline: none;
+
+}
+.buyer-btn:hover {
+	background: #488104 none repeat scroll 0 0;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 19px;
+	padding: 6px 20px;
+	text-decoration: none;
+	outline: none;
+}
