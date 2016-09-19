@@ -1,4 +1,4 @@
-<?php $SESSION_UERS_DATA = $this->session->userdata('seller_details'); ?>
+<?php $SESSION_UERS_DATA = $this->session->userdata('seller_details');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo site_url('assets/js/bootstrap.js'); ?>"></script>
 <?php include('assets/js/script.php'); ?>
-<?php include('assets/js/sellerscript.php'); ?>
+<?php 
+if($SESSION_UERS_DATA[0]['id']){
+include('assets/js/sellerscript.php');
+}
+?>
 <script type="text/javascript" src="<?php echo site_url('assets/js/image-scale.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo site_url('assets/js/jquery.flexisel.js'); ?>"></script>
 <link type="text/css" rel="stylesheet" href="<?php echo site_url('assets/css/sweetalert.css'); ?>">

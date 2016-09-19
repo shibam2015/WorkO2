@@ -61,7 +61,7 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 <div style="display:none;"  class="des-area-3">
 <div class="des-holder">
 <div class="des-holder-lft">
-<input class="form-control" name="seller_skill" id="seller_skill" value="<?php echo $data[0]['seller_skill'];?>" type="text">
+<input class="form-control" name="seller_skill" id="seller_skill" value="" type="text">
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="seller_skill_level" id="seller_skill_level">
@@ -94,7 +94,7 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 </select>
 </div>
 <div class="des-holder-rht">
-<input class="form-control" value="<?php echo $data[0]['seller_edu_collage_name'];?>" name="seller_edu_collage_name" id="seller_edu_collage_name" type="text" placeholder="College/University Name">
+<input class="form-control" value="" name="seller_edu_collage_name" id="seller_edu_collage_name" type="text" placeholder="College/University Name">
 </div>
 <div class="clearfix"></div>
 </div>
@@ -107,7 +107,7 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 </select>
 </div>
 <div class="des-holder-rht">
-<input class="form-control" name="" type="text" name="seller_edu_degree" id="seller_edu_degree" value="<?php echo $data[0]['seller_edu_degree'];?>" placeholder="Degree">
+<input class="form-control" name="" type="text" name="seller_edu_degree" id="seller_edu_degree" value="" placeholder="Degree">
 </div>
 <div class="clearfix"></div>
 </div>
@@ -142,12 +142,12 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 <h4>You don't have any Certification.</h4>
 <div style="display:none;"  class="des-area-5">
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_cerified" id="seller_cerified" value="<?php echo $data[0]['seller_cerified'];?>" placeholder="Certificate or Award">
+<input class="form-control" name="" type="text" name="seller_cerified" id="seller_cerified" value="" placeholder="Certificate or Award">
 <div class="clearfix"></div>
 </div>
 <div class="des-holder">
 <div class="des-holder-lft">
-<input class="form-control" name="" type="text" name="seller_cerified_from" id="seller_cerified_from" value="<?php echo $data[0]['seller_cerified_from'];?>" placeholder="Certified From (e.g. Adobe)">
+<input class="form-control" name="" type="text" name="seller_cerified_from" id="seller_cerified_from" value="" placeholder="Certified From (e.g. Adobe)">
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="seller_cerified_year" id="seller_cerified_year">
@@ -172,11 +172,11 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 <h4>You don't have any Portfolio.</h4>
 <div style="display:none;"  class="des-area-6">
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_profile_web" id="seller_profile_web" value="<?php echo $data[0]['seller_profile_web'];?>" placeholder="Description">
+<input class="form-control" name="" type="text" name="seller_profile_web" id="seller_profile_web" value="" placeholder="Description">
 <div class="clearfix"></div>
 </div>
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_profile_web_link" id="seller_profile_web_link" value="<?php echo $data[0]['seller_profile_web_link'];?>" placeholder="e.g. http://MyPortfolio.com">
+<input class="form-control" name="" type="text" name="seller_profile_web_link" id="seller_profile_web_link" value="" placeholder="e.g. http://MyPortfolio.com">
 <div class="clearfix"></div>
 </div>
 <div class="bot-area">
@@ -205,7 +205,7 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 </div>
 <div class="col-lg-7 col-md-7 col-sm-7">
 <div class="buyer-right-holder">
-<h1>samartest's Gigs</h1>
+<h1>Samartest's Gigs</h1>
 </div>
 <div class="buyer-right-holder top-mar-1">
 <h4>It seems that you don't have any active Gigs</h4>
@@ -239,33 +239,41 @@ $(document).ready(function(){
 $(document).ready(function(){
     $(".hide-3").click(function(){
         $(".des-area-3").hide();
+		$(".show-3").show();
     });
     $(".show-3").click(function(){
         $(".des-area-3").show();
+		$(".show-3").hide();
     });
 });
 $(document).ready(function(){
     $(".hide-4").click(function(){
         $(".des-area-4").hide();
+		$(".show-4").show();
     });
     $(".show-4").click(function(){
         $(".des-area-4").show();
+		$(".show-4").hide();
     });
 });
 $(document).ready(function(){
     $(".hide-5").click(function(){
         $(".des-area-5").hide();
+		$(".show-5").show();
     });
     $(".show-5").click(function(){
         $(".des-area-5").show();
+		$(".show-5").hide();
     });
 });
 $(document).ready(function(){
     $(".hide-6").click(function(){
         $(".des-area-6").hide();
+		$(".show-6").show();
     });
     $(".show-6").click(function(){
         $(".des-area-6").show();
+		$(".show-6").hide();
     });
 });
 $(document).ready(function(){

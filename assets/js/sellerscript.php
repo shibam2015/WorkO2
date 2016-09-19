@@ -61,7 +61,20 @@ $("#btn3").click(function(){
 	data: 'seller_skill='+ skill +'&id='+ id + '&seller_skill_level=' + $( "#seller_skill_level option:selected" ).val(),
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Skill Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-3").hide();
+	$(".show-3").show();
+	$('#seller_skill').val('');
+	});
+	//++++++++++++++++++
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
@@ -114,7 +127,21 @@ $("#btn4").click(function(){
 	},
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Education Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-4").hide();
+	$(".show-4").show();
+	$('#seller_edu_collage_name').val(' ');
+	$('#seller_edu_degree').val(' ')
+	});
+	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
@@ -135,7 +162,7 @@ $("#btn5").click(function(){
 	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var seller_cerified         = $('#seller_cerified').val();
-	var seller_cerified_from       = $('#seller_cerified_from').val();
+	var seller_cerified_from    = $('#seller_cerified_from').val();
 	var seller_cerified_year    = $('#seller_cerified_year option:selected').val();
 
 	if(seller_cerified == '' || seller_cerified == null){
@@ -158,7 +185,21 @@ $("#btn5").click(function(){
 	},
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Certification Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-5").hide();
+	$(".show-5").show();
+	$('#seller_cerified').val(' ');
+	$('#seller_cerified_from').val(' ')
+	});
+	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
@@ -192,7 +233,21 @@ $("#btn6").click(function(){
 	},
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Portfolio or Website Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-6").hide();
+	$(".show-6").show();
+	$('#seller_profile_web').val(' ');
+	$('#seller_profile_web_link').val(' ')
+	});
+	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			

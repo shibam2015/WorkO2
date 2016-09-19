@@ -15,6 +15,7 @@ public function __construct()
 {
 	parent::__construct();
 	//LODING THE MODULE
+	
 	$this->load->model('sellers');	
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
@@ -34,7 +35,7 @@ public function index()
 public function update_description()
 {
 	$data = array (
-		"seller_description" =>$this->input->post('seller_description'),
+		"seller_description" => $this->input->post('seller_description'),
 	);
 	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
 	if($this->status != false){
@@ -62,10 +63,11 @@ public function update_availability()
 public function update_skill()
 {
 	$data = array (
+		"user_id" => $this->input->post('id'),
 		"seller_skill" =>$this->input->post('seller_skill'),
 		"seller_skill_level" =>$this->input->post('seller_skill_level'),
 	);
-	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
+	$this->status = $this->sellers->seller_insert_data($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
@@ -77,6 +79,7 @@ public function update_skill()
 public function update_education()
 {
 	$data = array (
+		"user_id" => $this->input->post('id'),
 		"seller_edu_country" =>$this->input->post('seller_edu_country'),
 		"seller_edu_collage_name" =>$this->input->post('seller_edu_collage_name'),
 		"seller_edu_title" =>$this->input->post('seller_edu_title'),
@@ -84,7 +87,7 @@ public function update_education()
 		"seller_edu_from" =>$this->input->post('seller_edu_from'),
 		"seller_edu_to" =>$this->input->post('seller_edu_to'),
 	);
-	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
+	$this->status = $this->sellers->seller_insert_data($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
@@ -96,11 +99,12 @@ public function update_education()
 public function update_certificate()
 {
 	$data = array (
+		"user_id" => $this->input->post('id'),
 		"seller_cerified" =>$this->input->post('seller_cerified'),
 		"seller_cerified_from" =>$this->input->post('seller_cerified_from'),
 		"seller_cerified_year" =>$this->input->post('seller_cerified_year'),
 	);
-	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
+	$this->status = $this->sellers->seller_insert_data($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
@@ -112,10 +116,11 @@ public function update_certificate()
 public function update_portfolio()
 {
 	$data = array (
+		"user_id" => $this->input->post('id'),
 		"seller_profile_web" =>$this->input->post('seller_profile_web'),
 		"seller_profile_web_link" =>$this->input->post('seller_profile_web_link'),
 	);
-	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
+	$this->status = $this->sellers->seller_insert_data($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
@@ -134,6 +139,7 @@ public function seller_reg()
 		"seller_email"     => $this->input->post('seller_email',true),
 		"seller_phone"     => $this->input->post('seller_phone',true),
 	);
+	
 	/* ========================================================================================= */	
 	$this->status = $this->sellers->check_user_email_id($this->input->post('seller_uname'));
 	/* ========================================================================================= */	

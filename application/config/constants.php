@@ -49,6 +49,7 @@ define('SITE_TITLE',            'WORKO2');
 
 define('TBL_USER',   'work_users');
 define('TBL_SELLER', 'work_seller');
+define('TBL_SELLER_DATA', 'work_seller_data');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

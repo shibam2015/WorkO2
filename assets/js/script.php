@@ -12,8 +12,7 @@ $(function(){
 });
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-$(function()
-{
+$(function(){
 	$("#next").click(function(){
 	var output = validate();
 	if(output) {
@@ -141,6 +140,7 @@ $(function()
 function validate()
 {
 	var output = '';
+	
 	$(".signup-error").html('');
 	if(!($("#email").val())) {
 	output = false;
@@ -170,7 +170,8 @@ function validate()
 	return output;
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-var login = function(){
+var login = function()
+{
 	if(!($("#login-email").val())) {		
 	$("#email-lerror").html("Email required!");
 	return false;
@@ -282,35 +283,35 @@ var sellerRegister1 = function()
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var sellerRegister2 = function()
 {
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-var seller_name      =  document.getElementById('seller_name').value ;
-var seller_uname     =  document.getElementById('seller_username').value ;
-var seller_email     =  document.getElementById('seller_email').value ;
-var seller_phone     =  document.getElementById('seller_phone').value ;
-var seller_password  =  document.getElementById('seller_password').value ;
-var seller_cpassword =  document.getElementById('seller_cpassword').value ;	
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-jQuery.ajax({
-	type: "POST",
-	url: "<?php echo site_url('seller/seller_reg'); ?>",
-	data: {
-	seller_name : seller_name,
-	seller_uname : seller_uname,
-	seller_email : seller_email,
-	seller_phone : seller_phone,
-	seller_password : seller_password,
-	},
-	success: function (res) {
-	if(res == 'OPPS !! user already exsit'){	
-	document.getElementById('seller_reg2').style.display = 'none' ;
-	document.getElementById('seller_reg3').style.display = 'none' ;
-	document.getElementById('seller_reg1').style.display = 'block' ;
-	document.getElementById('error_seller_phone').innerHTML = res; 	
-	}else{
-	document.getElementById('error_seller_otp').innerHTML = res;
-	window.setTimeout(function() { window.location.href = '<?php echo site_url('seller'); ?>';}, 5000); 		
-	}
-	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	var seller_name      =  document.getElementById('seller_name').value ;
+	var seller_uname     =  document.getElementById('seller_username').value ;
+	var seller_email     =  document.getElementById('seller_email').value ;
+	var seller_phone     =  document.getElementById('seller_phone').value ;
+	var seller_password  =  document.getElementById('seller_password').value ;
+	var seller_cpassword =  document.getElementById('seller_cpassword').value ;	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	jQuery.ajax({
+		type: "POST",
+		url: "<?php echo site_url('seller/seller_reg'); ?>",
+		data: {
+		seller_name : seller_name,
+		seller_uname : seller_uname,
+		seller_email : seller_email,
+		seller_phone : seller_phone,
+		seller_password : seller_password,
+		},
+		success: function (res) {
+		if(res == 'OPPS !! user already exsit'){	
+		document.getElementById('seller_reg2').style.display = 'none' ;
+		document.getElementById('seller_reg3').style.display = 'none' ;
+		document.getElementById('seller_reg1').style.display = 'block' ;
+		document.getElementById('error_seller_phone').innerHTML = res; 	
+		}else{
+		document.getElementById('error_seller_otp').innerHTML = res;
+		window.setTimeout(function() { window.location.href = '<?php echo site_url('seller'); ?>';}, 5000); 		
+		}
+		}
 }); 
 //END		
 }

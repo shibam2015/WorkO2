@@ -53,6 +53,18 @@ public function seller_update_profile($id,$data)
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
+public function seller_insert_data($id,$data)
+{
+	if (!empty($id)) {
+	$this -> db -> insert(TBL_SELLER_DATA, $data);
+	$this->get_last_insert_id = $this -> db -> insert_id();
+	return true;
+	} else {
+	return false;
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
 public function seller_log($username,$password)
 {
 	$this->username = $username;
