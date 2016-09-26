@@ -5,22 +5,35 @@ $(document).ready(function(){
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn1").click(function(){
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var desc = $('#seller_description').val();
-	if(desc == '' || desc == null){
+	var language_name = $('#language_name').val();
+	var language_type = $('select#language_type option:selected').val();
+	if(language_name == '' || language_name == null){
 	sweetAlert('OPPS!! sorry the fild is mandatory');	
 	}else{
 	jQuery.ajax({
 	type: "POST",
-	url: "<?php echo site_url('seller/update_description'); ?>",
-	data: 'seller_description='+ desc +'&id='+ id ,
+	url: "<?php echo site_url('seller/update_language'); ?>",
+	data: 'language_name='+ language_name +'&id='+ id + '&language_type=' + language_type,
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Language Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$('#lang').append('<tr><td class="table-data">'+language_name+'</td><td class="table-data">'+language_type+'</td><td class="table-data"></td></tr>');
+	$(".pro-sec-right-holder-1").hide();
+	});
+	//++++++++++++++++++
 	}else{
-	sweetAlert("Oops...", "Something went wrong!");
+	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
 	}
-	}); 
+	});		
 	}
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
@@ -28,37 +41,15 @@ $("#btn1").click(function(){
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn2").click(function(){
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var avail = $('#seller_availability').val();
-	if(avail == '' || avail == null){
-	sweetAlert('OPPS!! sorry the fild is mandatory');	
-	}else{
-	jQuery.ajax({
-	type: "POST",
-	url: "<?php echo site_url('seller/update_availability'); ?>",
-	data: 'seller_availability='+ avail +'&id='+ id ,
-	success: function (res) {
-	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
-	}else{
-	sweetAlert("Oops...", "Something went wrong!");	
-	} 			
-	}
-	});
-	}
-});
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
-
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
-$("#btn3").click(function(){
-	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var skill = $('#seller_skill').val();
-	if(skill == '' || skill == null){
+	var skill_name =  $('#skill_name').val();
+	var skill_level = $('select#skill_level option:selected').val();
+	if(skill_name == '' || skill_name == null){
 	sweetAlert('OPPS!! sorry the fild is mandatory');	
 	}else{
 	jQuery.ajax({
 	type: "POST",
 	url: "<?php echo site_url('seller/update_skill'); ?>",
-	data: 'seller_skill='+ skill +'&id='+ id + '&seller_skill_level=' + $( "#seller_skill_level option:selected" ).val(),
+	data: 'seller_skill='+ skill_name +'&id='+ id + '&seller_skill_level=' + skill_level,
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
@@ -70,47 +61,45 @@ $("#btn3").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-3").hide();
-	$(".show-3").show();
-	$('#seller_skill').val('');
+	$('#skill').append('<tr><td class="table-data">'+skill_name+'</td><td class="table-data">'+skill_level+'</td><td class="table-data"></td></tr>');
+	$(".pro-sec-right-holder-2").hide();
 	});
 	//++++++++++++++++++
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
 	}
-	});
+	});		
 	}
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
-$("#btn4").click(function(){
-	
+$("#btn3").click(function(){
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var seller_edu_country       = $('#seller_edu_country option:selected').val();
-	var seller_edu_collage_name  = $('#seller_edu_collage_name').val();
-	var seller_edu_title         = $('#seller_edu_title option:selected').val();
-	var seller_edu_degree        = $('#seller_edu_degree').val();
-	var seller_edu_from          = $('#seller_edu_from option:selected').val();
-	var seller_edu_to            = $('#seller_edu_to option:selected').val();
+	var education_country   = $('select#education_country option:selected').val();
+	var education_name      = $('#education_name').val();
+	var education_title     = $('select#education_title option:selected').val();
+	var education_degree    = $('#education_degree').val();
+	var education_year_from = $('select#education_year_from option:selected').val();
+	var education_year_to   = $('select#education_year_to option:selected').val();
 	
-	if(seller_edu_country == '' || seller_edu_country == null){
+	if(education_country == '' || education_country == null){
 	sweetAlert('OPPS!! sorry the country name is mandatory');	
 	}else{
-	if(seller_edu_collage_name == '' || seller_edu_collage_name == null){
+	if(education_name == '' || education_name == null){
 	sweetAlert('OPPS!! sorry the collage name is mandatory');	
 	}else{
-	if(seller_edu_title == '' || seller_edu_title == null){
+	if(education_title == '' || education_title == null){
 	sweetAlert('OPPS!! sorry the title is mandatory');	
 	}else{
-	if(seller_edu_degree == '' || seller_edu_degree == null){
+	if(education_degree == '' || education_degree == null){
 	sweetAlert('OPPS!! sorry the degree is mandatory');	
 	}else{
-	if(seller_edu_from == '' || seller_edu_from == null){
+	if(education_year_from == '' || education_year_from == null){
 	sweetAlert('OPPS!! sorry the from is mandatory');	
 	}else{
-	if(seller_edu_to == '' || seller_edu_to == null){
+	if(education_year_to == '' || education_year_to == null){
 	sweetAlert('OPPS!! sorry the to is mandatory');	
 	}else{
 	jQuery.ajax({
@@ -118,12 +107,12 @@ $("#btn4").click(function(){
 	url: "<?php echo site_url('seller/update_education'); ?>",
 	data: { 
 		id: id, 
-		seller_edu_country: seller_edu_country,
-		seller_edu_collage_name: seller_edu_collage_name,
-		seller_edu_title: seller_edu_title,
-		seller_edu_degree: seller_edu_degree,
-		seller_edu_from: seller_edu_from,
-		seller_edu_to: seller_edu_to,
+		seller_edu_country: education_country,
+		seller_edu_collage_name: education_name,
+		seller_edu_title: education_title,
+		seller_edu_degree: education_degree,
+		seller_edu_from: education_year_from,
+		seller_edu_to: education_year_to,
 	},
 	success: function (res) {
 	if(res == 'Success'){
@@ -136,52 +125,48 @@ $("#btn4").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-4").hide();
-	$(".show-4").show();
-	$('#seller_edu_collage_name').val(' ');
-	$('#seller_edu_degree').val(' ')
+	$('#edu').append('<tr><td class="table-data">'+education_degree+'</td><td class="table-data">'+education_year_from+'-'+education_year_to+'</td><td class="table-data"></td></tr>');
+	$(".pro-sec-right-holder-3").hide();
 	});
 	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
 	}
-	});	
+	});		
 	}
 	}	
 	}	
 	}	
 	}
-	}
+	}	
 	
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
-$("#btn5").click(function(){
-	
+$("#btn4").click(function(){
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var seller_cerified         = $('#seller_cerified').val();
-	var seller_cerified_from    = $('#seller_cerified_from').val();
-	var seller_cerified_year    = $('#seller_cerified_year option:selected').val();
-
-	if(seller_cerified == '' || seller_cerified == null){
-	sweetAlert('OPPS!! sorry the certificate name is mandatory');	
+	var certifications_name = $('#certifications_name').val();
+	var certifications_from = $('#certifications_from').val();
+	var certifications_year = $('select#certifications_year option:selected').val();
+	if(certifications_name == '' || certifications_name == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory 1');	
 	}else{
-	if(seller_cerified_from == '' || seller_cerified_from == null){
-	sweetAlert('OPPS!! sorry the certified from name is mandatory');	
-	}else{
-	if(seller_cerified_year == '' || seller_cerified_year == null){
-	sweetAlert('OPPS!! sorry the ceritfied year is mandatory');	
+	if(certifications_from == '' || certifications_from == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory 2');	
+	}else{	
+	if(certifications_year == '' || certifications_year == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory 3');	
 	}else{
 	jQuery.ajax({
 	type: "POST",
 	url: "<?php echo site_url('seller/update_certificate'); ?>",
 	data: { 
 		id: id, 
-		seller_cerified: seller_cerified,
-		seller_cerified_from: seller_cerified_from,
-		seller_cerified_year: seller_cerified_year,
+		seller_cerified: certifications_name,
+		seller_cerified_from: certifications_from,
+		seller_cerified_year: certifications_year,
 	},
 	success: function (res) {
 	if(res == 'Success'){
@@ -194,42 +179,39 @@ $("#btn5").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-5").hide();
-	$(".show-5").show();
-	$('#seller_cerified').val(' ');
-	$('#seller_cerified_from').val(' ')
+	$('#certificate').append('<tr><td class="table-data">'+certifications_name+'</td><td class="table-data">'+certifications_year+'</td><td class="table-data"></td></tr>');
+	$(".pro-sec-right-holder-4").hide();
 	});
 	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
 	}
-	});	
-	}	
+	});		
+	}
 	}
 	}
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
-$("#btn6").click(function(){
-	
-	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
-	var seller_profile_web         = $('#seller_profile_web').val();
-	var seller_profile_web_link    = $('#seller_profile_web_link').val();
 
-	if(seller_profile_web == '' || seller_profile_web == null){
-	sweetAlert('OPPS!! sorry the description for portfolio or website is mandatory');	
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
+$("#btn5").click(function(){
+	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
+	var profile_description =  $('#profile_description').val();
+	var profile_url = $('#profile_url').val();
+	if(profile_description == '' || profile_description == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory');	
 	}else{
-	if(seller_profile_web_link == '' || seller_profile_web_link == null){
-	sweetAlert('OPPS!! sorry the link from name is mandatory');	
-	}else{
+	if(profile_url == '' || profile_url == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory');	
+	}else{	
 	jQuery.ajax({
 	type: "POST",
 	url: "<?php echo site_url('seller/update_portfolio'); ?>",
 	data: { 
 		id: id, 
-		seller_profile_web: seller_profile_web,
-		seller_profile_web_link: seller_profile_web_link,
+		seller_profile_web: profile_description,
+		seller_profile_web_link: profile_url,
 	},
 	success: function (res) {
 	if(res == 'Success'){
@@ -242,10 +224,8 @@ $("#btn6").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-6").hide();
-	$(".show-6").show();
-	$('#seller_profile_web').val(' ');
-	$('#seller_profile_web_link').val(' ')
+	$('#portfolio').append('<tr><td class="table-data">'+profile_description+'</td><td class="table-data">'+profile_url+'</td><td class="table-data"></td></tr>');
+	$(".pro-sec-right-holder-5").hide();
 	});
 	//++++++++++++++++++	
 	}else{
@@ -257,7 +237,6 @@ $("#btn6").click(function(){
 	}
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
-
 	
 //END	
 });

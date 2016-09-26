@@ -53,10 +53,10 @@ public function seller_update_profile($id,$data)
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
-public function seller_insert_data($id,$data)
+public function seller_insert_data($table,$id,$data)
 {
 	if (!empty($id)) {
-	$this -> db -> insert(TBL_SELLER_DATA, $data);
+	$this -> db -> insert($table, $data);
 	$this->get_last_insert_id = $this -> db -> insert_id();
 	return true;
 	} else {
@@ -93,6 +93,14 @@ public function get_seller_details($id)
 {
 	$query = $this -> db -> get_where(TBL_SELLER, array('id' => $id));
 	$getData = $query -> result_array();
+	return $getData;
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function select_with_where($table_name,$fild_name,$id)
+{
+	$query = $this->db->get_where($table_name, array($fild_name => $id));
+	$getData = $query->result_array();
 	return $getData;
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */

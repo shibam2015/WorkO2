@@ -46,10 +46,13 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('ADMIN_TITLE',           'WORKO2 ADMIN');
 define('SITE_TITLE',            'WORKO2');
 //================================================================
-
-define('TBL_USER',   'work_users');
-define('TBL_SELLER', 'work_seller');
-define('TBL_SELLER_DATA', 'work_seller_data');
+define('TBL_USER',                     'work_users');
+define('TBL_SELLER',                   'work_seller');
+define('TBL_SELLER_SKILL',             'work_seller_skill');
+define('TBL_SELLER_EDUCATION',         'work_seller_education');
+define('TBL_SELLER_CERTIFICATE',       'work_seller_certification');
+define('TBL_SELLER_PORTFOLIO',         'work_seller_portfolio');
+define('TBL_SELLER_LANGUAGE',          'work_seller_language');
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
