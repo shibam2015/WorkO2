@@ -4,6 +4,7 @@ $(document).ready(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn1").click(function(){
+	var fild_id = $('fild_id').val();	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var language_name = $('#language_name').val();
 	var language_type = $('select#language_type option:selected').val();
@@ -25,8 +26,9 @@ $("#btn1").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$('#lang').append('<tr><td class="table-data">'+language_name+'</td><td class="table-data">'+language_type+'</td><td class="table-data"></td></tr>');
-	$(".pro-sec-right-holder-1").hide();
+	location.reload();
+	//$('#lang').append('<tr><td class="table-data">'+language_name+'</td><td class="table-data">'+language_type+'</td></tr>');
+	//$(".pro-sec-right-holder-1").hide();
 	});
 	//++++++++++++++++++
 	}else{
@@ -40,6 +42,7 @@ $("#btn1").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn2").click(function(){
+	var fild_id = $('fild_id').val();	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var skill_name =  $('#skill_name').val();
 	var skill_level = $('select#skill_level option:selected').val();
@@ -61,8 +64,9 @@ $("#btn2").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$('#skill').append('<tr><td class="table-data">'+skill_name+'</td><td class="table-data">'+skill_level+'</td><td class="table-data"></td></tr>');
-	$(".pro-sec-right-holder-2").hide();
+	location.reload();
+	//$('#skill').append('<tr><td class="table-data">'+skill_name+'</td><td class="table-data">'+skill_level+'</td><td class="table-data"></td></tr>');
+	//$(".pro-sec-right-holder-2").hide();
 	});
 	//++++++++++++++++++
 	}else{
@@ -76,6 +80,7 @@ $("#btn2").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn3").click(function(){
+	var fild_id = $('fild_id').val();	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var education_country   = $('select#education_country option:selected').val();
 	var education_name      = $('#education_name').val();
@@ -125,8 +130,9 @@ $("#btn3").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$('#edu').append('<tr><td class="table-data">'+education_degree+'</td><td class="table-data">'+education_year_from+'-'+education_year_to+'</td><td class="table-data"></td></tr>');
-	$(".pro-sec-right-holder-3").hide();
+	location.reload();
+	//$('#edu').append('<tr><td class="table-data">'+education_degree+'</td><td class="table-data">'+education_year_from+'-'+education_year_to+'</td><td class="table-data"></td></tr>');
+	//$(".pro-sec-right-holder-3").hide();
 	});
 	//++++++++++++++++++	
 	}else{
@@ -146,6 +152,7 @@ $("#btn3").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn4").click(function(){
+	var fild_id = $('fild_id').val();	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var certifications_name = $('#certifications_name').val();
 	var certifications_from = $('#certifications_from').val();
@@ -179,8 +186,9 @@ $("#btn4").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$('#certificate').append('<tr><td class="table-data">'+certifications_name+'</td><td class="table-data">'+certifications_year+'</td><td class="table-data"></td></tr>');
-	$(".pro-sec-right-holder-4").hide();
+	location.reload();
+	//$('#certificate').append('<tr><td class="table-data">'+certifications_name+'</td><td class="table-data">'+certifications_year+'</td><td class="table-data"></td></tr>');
+	//$(".pro-sec-right-holder-4").hide();
 	});
 	//++++++++++++++++++	
 	}else{
@@ -196,6 +204,7 @@ $("#btn4").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn5").click(function(){
+	var fild_id = $('fild_id').val();	
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var profile_description =  $('#profile_description').val();
 	var profile_url = $('#profile_url').val();
@@ -224,8 +233,9 @@ $("#btn5").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$('#portfolio').append('<tr><td class="table-data">'+profile_description+'</td><td class="table-data">'+profile_url+'</td><td class="table-data"></td></tr>');
-	$(".pro-sec-right-holder-5").hide();
+	location.reload();
+	//$('#portfolio').append('<tr><td class="table-data">'+profile_description+'</td><td class="table-data">'+profile_url+'</td><td class="table-data"></td></tr>');
+	//$(".pro-sec-right-holder-5").hide();
 	});
 	//++++++++++++++++++	
 	}else{
@@ -237,7 +247,110 @@ $("#btn5").click(function(){
 	}
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
-	
 //END	
 });
+//////////////////////////////////////////////////////////
+var deleteData = function(id,type){
+	swal({   
+	title: "Are you sure?",
+	text: "You want to delete this.You will not be able to recover this data!",
+	type: "warning",
+	showCancelButton: true,   
+	confirmButtonColor: "#DD6B55",   
+	confirmButtonText: "Yes, delete it!",   
+	closeOnConfirm: false 
+	}, function(){   
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/delete_seller_data'); ?>",
+	data: { 
+		id: id, 
+		type: type,
+	},
+	success: function (res) {
+	if(res == 'Success'){
+	//+++++++++++++++++	
+	swal({   
+	title: "Your data has been deleted.",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	location.reload();
+	});
+	//++++++++++++++++++	
+	}else{
+	sweetAlert("Oops...", "Something went wrong!");	
+	} 			
+	}
+	});	
+	});
+} 
+var editDataLanguage = function(id,type,data1,data2){
+	$('#fild_id').val('');
+	$('#fild_type').val('');
+	$('#btn1').html('Update');	
+	//$('#btn6').show();
+	$(".pro-sec-right-holder-1").show('slow',function(){
+	$('#language_name').val(data1);
+	$('#language_type').val(data2);	
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);	
+	});
+}
+var editDataSkill = function(id,type,data1,data2){
+	$('#fild_id').val('');
+	$('#fild_type').val('');
+	$('#btn2').html('Update');
+	//$('#btn7').show();
+	$(".pro-sec-right-holder-2").show('slow',function(){
+	$('#skill_name').val(data1);
+	$('#skill_level').val(data2);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);		
+	});
+}
+var editDataEducation = function(id,type,data1,data2,data3,data4,data5,data6){
+	$('#fild_id').val('');
+	$('#fild_type').val('');
+	$('#btn3').html('Update');
+	//$('#btn8').show();
+	$(".pro-sec-right-holder-3").show('slow',function(){
+	$('#education_country').val(data1);
+	$('#education_name').val(data2);
+	$('#education_title').val(data3);
+	$('#education_degree').val(data4);
+	$('#education_year_from').val(data5);
+	$('#education_year_to').val(data6);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);		
+	});
+}
+var editDataCertificate = function(id,type,data1,data2,data3){
+	$('#fild_id').val('');
+	$('#fild_type').val('');
+	$('#btn4').html('Update');
+	//$('#btn9').show();
+	$(".pro-sec-right-holder-4").show('slow',function(){
+	$('#certifications_name').val(data1);
+	$('#certifications_from').val(data2);
+	$('#certifications_year').val(data3);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);		
+	});
+}
+var editDataPortfolio = function(id,type,data1,data2){
+	$('#fild_id').val('');
+	$('#fild_type').val('');
+	$('#btn5').html('Update');
+	//$('#btn10').show();
+	$(".pro-sec-right-holder-5").show('slow',function(){
+	$('#profile_description').val(data1);
+	$('#profile_url').val(data2);	
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);	
+	});
+}
 </script>

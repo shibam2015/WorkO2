@@ -16,6 +16,26 @@ function __construct()
 {
 	parent::__construct();
 }
+
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
+/* ========================================================================================= */
+public function delete($table_name,$fild_name,$id)
+{
+	$this->db->delete($table_name, array($fild_name => $id));
+	return true;
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
+/* ========================================================================================= */
+public function seller_insert_data($table,$id,$data)
+{
+	if (!empty($id)) {
+	$this -> db -> insert($table, $data);
+	$this->get_last_insert_id = $this -> db -> insert_id();
+	return $this->get_last_insert_id;
+	} else {
+	return false;
+	}
+}
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 public function check_user_email_id($data)
@@ -46,18 +66,6 @@ public function seller_update_profile($id,$data)
 	if (!empty($id)) {
 	$this -> db -> where('id', $id);
 	$this -> db -> update(TBL_SELLER, $data);
-	return true;
-	} else {
-	return false;
-	}
-}
-/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
-/* ========================================================================================= */
-public function seller_insert_data($table,$id,$data)
-{
-	if (!empty($id)) {
-	$this -> db -> insert($table, $data);
-	$this->get_last_insert_id = $this -> db -> insert_id();
 	return true;
 	} else {
 	return false;
@@ -103,6 +111,7 @@ public function select_with_where($table_name,$fild_name,$id)
 	$getData = $query->result_array();
 	return $getData;
 }
+
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 //=+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	 

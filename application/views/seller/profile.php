@@ -77,6 +77,7 @@
 </div>
 <div class="pro-holder-3">
 <select class="pro-select2"  name="language_type" id="language_type">
+<option value="">Select</option>
 <option value="Basic">Basic</option>
 <option value="Conversational">Conversational</option>
 <option value="Fluent">Fluent</option>
@@ -84,13 +85,19 @@
 </select>
 </div>
 <div><a class="cancel-btn can-1" href="javascript:void(0)">Cancel</a></div>
-<div><a class="add-btn" id="btn1" href="javascript:void(0)">Add</a></div>
+<div>
+<a class="add-btn" id="btn1" href="javascript:void(0)">Add</a> 
+<!--<a class="add-btn" id="btn6" style="display:none" href="javascript:void(0)">Update</a>-->
+</div>
 <div class="clearfix"></div>
 </div>
-<table style="border:1px solid #ccc; width:100%" id="lang">
+<div style="border: 1px solid #ccc;">
+<table style="width:100%" id="lang">
 <tr class="table-header">
 <td class="table-data">Language</td>
 <td class="table-data">Level</td>
+<td class="table-data">&nbsp;</td>
+<td class="table-data">&nbsp;</td>
 <td class="table-data data-col"><a class="new-1" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -100,13 +107,15 @@ foreach($languages as $language){
 <tr>
 <td class="table-data"><?php echo $language['seller_language']; ?></td>
 <td class="table-data"><?php echo $language['seller_language_level']; ?></td>
-<td class="table-data"></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+</tr>
 <?php
 }
 }
 ?>  
 </tr>
-</table>
+</table></div>
 </div>
 </div>
 <div class="clearfix"></div>
@@ -133,13 +142,19 @@ foreach($languages as $language){
 </select>
 </div>
 <div><a class="cancel-btn can-2" href="javascript:void(0)">Cancel</a></div>
-<div><a class="add-btn" id="btn2" href="javascript:void(0)">Add</a></div>
+<div>
+<a class="add-btn" id="btn2" href="javascript:void(0)">Add</a> 
+<!--<a class="add-btn" id="btn7" style="display:none" href="javascript:void(0)">Update</a>-->
+</div>
 <div class="clearfix"></div>
 </div>
-<table style="border:1px solid #ccc; width:100%" id="skill">
+<div style="border: 1px solid #ccc;">
+<table style="width:100%" id="skill">
 <tr class="table-header">
 <td class="table-data">Skill</td>
 <td class="table-data">Level</td>
+<td class="table-data">&nbsp;</td>
+<td class="table-data">&nbsp;</td>
 <td class="table-data data-col"><a class="new-2" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -149,12 +164,15 @@ foreach($skills as $skill){
 <tr>
 <td class="table-data"><?php echo $skill['seller_skill']; ?></td>
 <td class="table-data"><?php echo $skill['seller_skill_level']; ?></td>
-<td class="table-data"></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+</tr>
 <?php
 }
 }
 ?>  
 </table>
+</div>
 <div class="pro-sec-right-holder-bot">
 <ul>
 <li></li>
@@ -227,15 +245,21 @@ foreach($skills as $skill){
 </div>
 <div class="pro-sec-right-holder-row-right">
 <div> <a class="cancel-btn can-3" href="javascript:void(0)">Cancel</a> </div>
-<div> <a class="add-btn" id="btn3" href="javascript:void(0)">Add</a> </div>
+<div> 
+<a class="add-btn" id="btn3" href="javascript:void(0)">Add</a> 
+<!--<a class="add-btn" id="btn8" style="display:none" href="javascript:void(0)">Update</a>-->
+</div>
 </div>
 </div>
 <div class="clearfix"></div>
 </div>
-<table style="border:1px solid #ccc; width:100%" id="edu">
+<div style="border: 1px solid #ccc;">
+<table style="width:100%" id="edu">
 <tr class="table-header">
 <td class="table-data">Degree</td>
 <td class="table-data">Year</td>
+<td class="table-data">&nbsp;</td>
+<td class="table-data">&nbsp;</td>
 <td class="table-data data-col"><a class="new-3" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -245,12 +269,15 @@ foreach($educations as $education){
 <tr>
 <td class="table-data"><?php echo $education['seller_edu_degree']; ?></td>
 <td class="table-data"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></td>
-<td class="table-data"></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+</tr>
 <?php
 }
 }
 ?>  
 </table>
+</div>
 </div>
 </div>
 <div class="clearfix"></div>
@@ -283,14 +310,20 @@ foreach($educations as $education){
 </select>
 </div>
 <div><a class="cancel-btn can-4" href="javascript:void(0)">Cancel</a></div>
-<div><a class="add-btn" id="btn4" href="javascript:void(0)">Add</a></div>
+<div>
+<a class="add-btn" id="btn4" href="javascript:void(0)">Add</a> 
+<!--<a class="add-btn" id="btn9" style="display:none" href="javascript:void(0)">Update</a>-->
+</div>
 </div>
 <div class="clearfix"></div>
 </div>
-<table style="border:1px solid #ccc; width:100%" id="certificate">
+<div style="border: 1px solid #ccc;">
+<table style="width:100%" id="certificate">
 <tr class="table-header">
 <td class="table-data">Certificate Or Award</td>
 <td class="table-data">Year</td>
+<td class="table-data">&nbsp;</td>
+<td class="table-data">&nbsp;</td>
 <td class="table-data data-col"><a class="new-4" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -300,12 +333,15 @@ foreach($certificates as $certificate){
 <tr>
 <td class="table-data"><?php echo $certificate['seller_cerified']; ?></td>
 <td class="table-data"><?php echo $certificate['seller_cerified_year']; ?></td>
-<td class="table-data"></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+</tr>
 <?php
 }
 }
 ?>  
 </table>
+</div>
 </div>
 </div>
 <div class="clearfix"></div>
@@ -331,14 +367,20 @@ foreach($certificates as $certificate){
 <input class="pro-select2" name="profile_url" id="profile_url" type="text" placeholder="e.g. http://MyPortfolio.com">
 </div>
 <div><a class="cancel-btn can-5" href="javascript:void(0)">Cancel</a></div>
-<div><a class="add-btn" id="btn5" href="javascript:void(0)">Add</a></div>
+<div>
+<a class="add-btn" id="btn5" href="javascript:void(0)">Add</a> 
+<!--<a class="add-btn" id="btn10" style="display:none" href="javascript:void(0)">Update</a>-->
+</div>
 </div>
 <div class="clearfix"></div>
 </div>
-<table style="border:1px solid #ccc; width:100%" id="portfolio">
+<div style="border: 1px solid #ccc;">
+<table style="width:100%" id="portfolio">
 <tr class="table-header">
 <td class="table-data">Description</td>
 <td class="table-data">URL</td>
+<td class="table-data">&nbsp;</td>
+<td class="table-data">&nbsp;</td>
 <td class="table-data data-col"><a class="new-5" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -348,12 +390,15 @@ foreach($portfolios as $portfolio){
 <tr>
 <td class="table-data"><?php echo $portfolio['seller_profile_web']; ?></td>
 <td class="table-data"><?php echo $portfolio['seller_profile_web_link']; ?></td>
-<td class="table-data"></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+</tr> 
 <?php
 }
 }
-?>  
+?>
 </table>
+</div>
 </div>
 </div>
 <div class="clearfix"></div>
@@ -382,6 +427,8 @@ foreach($portfolios as $portfolio){
 </div>
 </div>
 </section>
+<input type="hidden" value="" name="fild_id" id="fild_id">
+<input type="hidden" value="" name="fild_type" id="fild_type">
 </main>
 <?php include('inc/footer.php'); ?>
 <script type="text/javascript">
@@ -390,9 +437,14 @@ $(".can-1").click(function(){
 $(".pro-sec-right-holder-1").hide();
 });
 $(".new-1").click(function(){
+$(".pro-sec-right-holder-1").show('slow',function(){
+//$('#btn6').hide();
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#btn1').html('Add');	
 $('#language_name').val('');
 $('select#language_type option:selected').val('');		
-$(".pro-sec-right-holder-1").show();
+});
 });
 });
 $(document).ready(function(){
@@ -400,8 +452,13 @@ $(".can-2").click(function(){
 $(".pro-sec-right-holder-2").hide();
 });
 $(".new-2").click(function(){
-$('#skill_name').val('');
-$(".pro-sec-right-holder-2").show();
+$(".pro-sec-right-holder-2").show('slow',function(){
+//$('#btn7').hide();
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#btn2').html('Add');	
+$('#skill_name').val('');	
+});
 });
 });
 $(document).ready(function(){
@@ -409,9 +466,14 @@ $(".can-3").click(function(){
 $(".pro-sec-right-holder-3").hide();
 });
 $(".new-3").click(function(){
+$(".pro-sec-right-holder-3").show('slow',function(){
+//$('#btn8').hide();
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#btn3').html('Add');	
 $('#education_name').val('');
-$('#education_degree').val('');
-$(".pro-sec-right-holder-3").show();
+$('#education_degree').val('');	
+});
 });
 });
 $(document).ready(function(){
@@ -419,9 +481,14 @@ $(".can-4").click(function(){
 $(".pro-sec-right-holder-4").hide();
 });
 $(".new-4").click(function(){
+$(".pro-sec-right-holder-4").show('slow',function(){
+//$('#btn9').hide();
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#btn4').html('Add');	
 $('#certifications_name').val('');
-$('#certifications_from').val('');
-$(".pro-sec-right-holder-4").show();
+$('#certifications_from').val('');	
+});
 });
 });
 $(document).ready(function(){
@@ -429,9 +496,14 @@ $(".can-5").click(function(){
 $(".pro-sec-right-holder-5").hide();
 });
 $(".new-5").click(function(){
+$(".pro-sec-right-holder-5").show('slow',function(){
+//$('#btn10').hide();
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#btn5').html('Add');	
 $('#profile_description').val('');
-$('#profile_url').val('');
-$(".pro-sec-right-holder-5").show();
+$('#profile_url').val('');	
+});
 });
 });
 </script>
