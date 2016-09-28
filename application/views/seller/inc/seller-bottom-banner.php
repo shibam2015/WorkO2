@@ -19,11 +19,11 @@
 <div class="cap-bottom">
 <ul>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img1.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img1.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img02.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img02.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 </ul>
@@ -38,11 +38,11 @@
 <div class="cap-bottom">
 <ul>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img1.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img1.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img02.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img02.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 </ul>
@@ -57,11 +57,11 @@
 <div class="cap-bottom">
 <ul>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img1.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img1.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img02.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img02.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 </ul>
@@ -76,11 +76,11 @@
 <div class="cap-bottom">
 <ul>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img1.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img1.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img02.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img02.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 </ul>
@@ -95,11 +95,11 @@
 <div class="cap-bottom">
 <ul>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img1.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img1.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 <li>
-<div class="img-box"><img style="max-width:100%; height:auto;" src="assets/images/cap-img02.jpg"></div>
+<div class="img-box"><img style="max-width:100%; height:auto;" src="<?php echo site_url('assets'); ?>/images/cap-img02.jpg"></div>
 <p>Uploading your products is really simple.</p>
 </li>
 </ul>

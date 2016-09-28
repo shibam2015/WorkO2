@@ -18,6 +18,17 @@ public function __construct()
 	
 	$this->load->model('sellers');	
 }
+
+public function is_login()
+{
+	$session_details = $this->session->all_userdata();
+	if(!isset($session_details['seller_login'])){
+	return false;
+	}else{
+	return true;	
+	}	
+}
+
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
 public function index()
@@ -34,6 +45,63 @@ public function index()
 	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
 	$this->load->view('seller/profile',$msg);	
 	}	
+}
+
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function seller_reg()
+{
+	$data = array (
+		"seller_name"      => $this->input->post('seller_name',true),
+		"seller_username"  => $this->input->post('seller_uname',true),
+		"seller_passsword" => md5($this->input->post('seller_password',true)),
+		"seller_email"     => $this->input->post('seller_email',true),
+		"seller_phone"     => $this->input->post('seller_phone',true),
+	);
+	/* ========================================================================================= */	
+	$this->status = $this->sellers->check_user_email_id($this->input->post('seller_uname'));
+	/* ========================================================================================= */	
+	if($this->status != false){
+	$this->status = $this->sellers->seller_registration($data);
+	if($this->status != 0){
+	echo 'Thank you for registering';
+	}else{
+	echo 'Fail';	
+	}
+	}else{
+	echo 'OPPS !! user already exsit';
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function login()
+{
+	$this->get_admin_username = $this->input->post('seller_username');
+	$this->get_admin_password = $this->input->post('seller_password');
+	
+	if(!empty( $this->get_admin_username ) and !empty( $this->get_admin_password ) )
+	{
+	$this->data = $this->sellers->seller_log($this->get_admin_username,$this->get_admin_password);
+	if($this->data != false)
+	{
+	$this->session->set_userdata('seller_details',$this->data);
+	$this->session->set_userdata('seller_login', 'YES');
+	redirect('seller');	
+	}else
+	{
+	$this->index(); 	
+	}
+	}else
+	{
+	$this->index(); 
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function logout()
+{
+	$this->session->sess_destroy();
+	redirect('seller','refresh');
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
@@ -54,7 +122,7 @@ public function update_description()
 public function update_availability()
 {
 	$data = array (
-	"seller_availability" =>$this->input->post('seller_availability'),
+		"seller_availability" =>$this->input->post('seller_availability'),
 	);
 	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
 	if($this->status != false){
@@ -67,111 +135,140 @@ public function update_availability()
 /* ========================================================================================= */
 public function update_language()
 {
+	$get_fild_id = $this->input->post('fild_id');
+	
 	$data = array (
-	"user_id" => $this->input->post('id'),
-	"seller_language" =>$this->input->post('language_name'),
-	"seller_language_level" =>$this->input->post('language_type'),
+		"user_id" => $this->input->post('id'),
+		"seller_language" =>$this->input->post('language_name'),
+		"seller_language_level" =>$this->input->post('language_type'),
 	);
+	if(($get_fild_id != 0) or ($get_fild_id != '0')){
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER_LANGUAGE,$data,'id',$get_fild_id);
+	if($this->status != false){
+	echo 'Updated';	
+	}else{
+	echo 'Fail';	
+	}
+	}else{
 	$this->status = $this->sellers->seller_insert_data(TBL_SELLER_LANGUAGE,$this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
 	echo 'Fail';	
 	}
+	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 public function update_skill()
 {
+	$get_fild_id = $this->input->post('fild_id');
+	
 	$data = array (
-	"user_id" => $this->input->post('id'),
-	"seller_skill" =>$this->input->post('seller_skill'),
-	"seller_skill_level" =>$this->input->post('seller_skill_level'),
+		"user_id" => $this->input->post('id'),
+		"seller_skill" =>$this->input->post('seller_skill'),
+		"seller_skill_level" =>$this->input->post('seller_skill_level'),
 	);
+	if(($get_fild_id != 0) or ($get_fild_id != '0')){
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER_SKILL,$data,'id',$get_fild_id);
+	if($this->status != false){
+	echo 'Updated';	
+	}else{
+	echo 'Fail';	
+	}	
+	}else{
 	$this->status = $this->sellers->seller_insert_data(TBL_SELLER_SKILL,$this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
 	echo 'Fail';	
 	}
+	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 public function update_education()
 {
+	$get_fild_id = $this->input->post('fild_id');
+	
 	$data = array (
-	"user_id" => $this->input->post('id'),
-	"seller_edu_country" =>$this->input->post('seller_edu_country'),
-	"seller_edu_collage_name" =>$this->input->post('seller_edu_collage_name'),
-	"seller_edu_title" =>$this->input->post('seller_edu_title'),
-	"seller_edu_degree" =>$this->input->post('seller_edu_degree'),
-	"seller_edu_from" =>$this->input->post('seller_edu_from'),
-	"seller_edu_to" =>$this->input->post('seller_edu_to'),
+		"user_id" => $this->input->post('id'),
+		"seller_edu_country" =>$this->input->post('seller_edu_country'),
+		"seller_edu_collage_name" =>$this->input->post('seller_edu_collage_name'),
+		"seller_edu_title" =>$this->input->post('seller_edu_title'),
+		"seller_edu_degree" =>$this->input->post('seller_edu_degree'),
+		"seller_edu_from" =>$this->input->post('seller_edu_from'),
+		"seller_edu_to" =>$this->input->post('seller_edu_to'),
 	);
+	if(($get_fild_id != 0) or ($get_fild_id != '0')){
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER_EDUCATION,$data,'id',$get_fild_id);
+	if($this->status != false){
+	echo 'Updated';	
+	}else{
+	echo 'Fail';	
+	}		
+	}else{
 	$this->status = $this->sellers->seller_insert_data(TBL_SELLER_EDUCATION,$this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
 	echo 'Fail';	
 	}
+	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 public function update_certificate()
 {
+	$get_fild_id = $this->input->post('fild_id');
+	
 	$data = array (
-	"user_id" => $this->input->post('id'),
-	"seller_cerified" =>$this->input->post('seller_cerified'),
-	"seller_cerified_from" =>$this->input->post('seller_cerified_from'),
-	"seller_cerified_year" =>$this->input->post('seller_cerified_year'),
+		"user_id" => $this->input->post('id'),
+		"seller_cerified" =>$this->input->post('seller_cerified'),
+		"seller_cerified_from" =>$this->input->post('seller_cerified_from'),
+		"seller_cerified_year" =>$this->input->post('seller_cerified_year'),
 	);
+	if(($get_fild_id != 0) or ($get_fild_id != '0')){
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER_CERTIFICATE,$data,'id',$get_fild_id);
+	if($this->status != false){
+	echo 'Updated';	
+	}else{
+	echo 'Fail';	
+	}			
+	}else{
 	$this->status = $this->sellers->seller_insert_data(TBL_SELLER_CERTIFICATE,$this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
 	echo 'Fail';	
 	}
+	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
 public function update_portfolio()
 {
+	$get_fild_id = $this->input->post('fild_id');
+	
 	$data = array (
-	"user_id" => $this->input->post('id'),
-	"seller_profile_web" =>$this->input->post('seller_profile_web'),
-	"seller_profile_web_link" =>$this->input->post('seller_profile_web_link'),
+		"user_id" => $this->input->post('id'),
+		"seller_profile_web" =>$this->input->post('seller_profile_web'),
+		"seller_profile_web_link" =>$this->input->post('seller_profile_web_link'),
 	);
+	if(($get_fild_id != 0) or ($get_fild_id != '0')){
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER_PORTFOLIO,$data,'id',$get_fild_id);
+	if($this->status != false){
+	echo 'Updated';	
+	}else{
+	echo 'Fail';	
+	}			
+	}else{
 	$this->status = $this->sellers->seller_insert_data(TBL_SELLER_PORTFOLIO,$this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
 	}else{
 	echo 'Fail';	
 	}
-}
-
-/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
-/* ========================================================================================= */	
-public function seller_reg()
-{
-	$data = array (
-	"seller_name"      => $this->input->post('seller_name',true),
-	"seller_username"  => $this->input->post('seller_uname',true),
-	"seller_passsword" => md5($this->input->post('seller_password',true)),
-	"seller_email"     => $this->input->post('seller_email',true),
-	"seller_phone"     => $this->input->post('seller_phone',true),
-	);
-	/* ========================================================================================= */	
-	$this->status = $this->sellers->check_user_email_id($this->input->post('seller_uname'));
-	/* ========================================================================================= */	
-	if($this->status != false){
-	$this->status = $this->sellers->seller_registration($data);
-	if($this->status != 0){
-	echo 'Thank you for registering';
-	}else{
-	echo 'Fail';	
-	}
-	}else{
-	echo 'OPPS !! user already exsit';
 	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
@@ -212,35 +309,66 @@ public function delete_seller_data()
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
-public function login()
+public function update_seller_details()
 {
-	$this->get_admin_username = $this->input->post('seller_username');
-	$this->get_admin_password = $this->input->post('seller_password');
-	
-	if(!empty( $this->get_admin_username ) and !empty( $this->get_admin_password ) )
-	{
-	$this->data = $this->sellers->seller_log($this->get_admin_username,$this->get_admin_password);
-	if($this->data != false)
-	{
-	$this->session->set_userdata('seller_details',$this->data);
-	$this->session->set_userdata('seller_login', 'YES');
-	redirect('seller');	
-	}else
-	{
-	$this->index(); 	
+	if($this->is_login()){
+	$user_id = $this->input->post('user_id');
+	if(!empty($user_id)){
+	$get_seller_availability_type = $this->input->post('seller_availability_type');
+	$get_seller_availability_time = $this->input->post('seller_availability_time');
+	$get_seller_availability_amount = $this->input->post('seller_availability_amount');
+	$get_seller_description = $this->input->post('seller_description');	
+	$data = array(
+		'seller_availability_type'=> $get_seller_availability_type,
+		'seller_availability_time'=> $get_seller_availability_time,
+		'seller_availability_amount'=> $get_seller_availability_amount,
+		'seller_description' => $get_seller_description
+	);
+	$this->status = $this->sellers->seller_update_data(TBL_SELLER,$data,'id',$user_id);
+	if($this->status != false){
+	$session_details = $this->session->all_userdata();		
+	$msg['data'] = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
+	$msg['languages'] = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['skills'] = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$this->load->view('seller/profile_2',$msg);		
+	}else{
+	$this->index();		
 	}
-	}else
-	{
-	$this->index(); 
+	}else{
+	$this->load->view('seller/profile_2');	
+	}
+	}else{
+	$this->index();		
 	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
-public function logout()
+public function seller_view_job_one()
 {
-	$this->session->sess_destroy();
-	redirect('seller','refresh');
+	if($this->is_login()){
+	$this->load->view('seller/job_one');
+	}else{
+	$this->index();		
+	}
 }
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function seller_job_one()
+{
+	if($this->is_login()){
+	
+	
+	
+	
+	}else{
+	$this->index();		
+	}
+}
+
+
 /* ========================================================================================= */	
 /* =============================== */	
 /* ========================================================================================= */	

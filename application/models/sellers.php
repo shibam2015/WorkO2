@@ -16,14 +16,6 @@ function __construct()
 {
 	parent::__construct();
 }
-
-/* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
-/* ========================================================================================= */
-public function delete($table_name,$fild_name,$id)
-{
-	$this->db->delete($table_name, array($fild_name => $id));
-	return true;
-}
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
 /* ========================================================================================= */
 public function seller_insert_data($table,$id,$data)
@@ -35,6 +27,25 @@ public function seller_insert_data($table,$id,$data)
 	} else {
 	return false;
 	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
+/* ========================================================================================= */
+public function seller_update_data($table_name,$data,$fild_name,$id)
+{
+	if (!empty($id)) {
+	$this->db->where($fild_name, $id);
+	$this->db->update($table_name, $data);
+	return true;
+	} else {
+	return false;
+	}
+} 
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++CORE== */
+/* ========================================================================================= */
+public function delete($table_name,$fild_name,$id)
+{
+	$this->db->delete($table_name, array($fild_name => $id));
+	return true;
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */

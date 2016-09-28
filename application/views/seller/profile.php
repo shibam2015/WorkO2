@@ -8,6 +8,8 @@
 </section>
 <section class="seller-profile">
 <div class="container">
+<form action="<?php echo site_url('seller/update_seller_details'); ?>" method="post">
+<input type="hidden" name="user_id" value="<?php echo $SESSION_UERS_DATA[0]['id']; ?>">
 <div class="row">
 <div class="profile-sec">
 <div class="col-lg-3 col-md-3 col-sm-3">
@@ -19,24 +21,24 @@
 <div class="col-lg-9 col-md-9 col-sm-9">
 <div class="pro-sec-right">
 <div class="pro-holder"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-<select class="pro-select" name="">
-<option>I want to work</option>
-<option>Part time</option>
-<option>Full time</option>
+<select class="pro-select" name="seller_availability_type" id="seller_availability_type" required>
+<option value="">I want to work</option>
+<option value="Per Time" <?php if($data[0]['seller_availability_type'] == 'Per Time'){?> selected <?php } ?>>Part time</option>
+<option value="Full Time" <?php if($data[0]['seller_availability_type'] == 'Full Time'){?> selected <?php } ?>>Full time</option>
 </select>
 </div>
 <div class="pro-holder"> <i class="fa fa-clock-o" aria-hidden="true"></i>
-<select class="pro-select" name="">
-<option>Less than 30 hours a week</option>
-<option>More than 30 hours a week</option>
-<option>As needed</option>
+<select class="pro-select" name="seller_availability_time" id="seller_availability_time" required>
+<option value="Less than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'Less than 30 hours a week'){?> selected <?php } ?>>Less than 30 hours a week</option>
+<option value="More than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'More than 30 hours a week'){?> selected <?php } ?>>More than 30 hours a week</option>
+<option value="As needed" <?php if($data[0]['seller_availability_time'] == 'As needed'){?> selected <?php } ?>>As needed</option>
 </select>
 </div>
 <div class="pro-holder"> <i class="fa fa-usd" aria-hidden="true"></i>
-<select class="pro-select" name="">
-<option>Less than $500 per month</option>
-<option>Between $500 and $1000 per month</option>
-<option>More than $1000 per month</option>
+<select class="pro-select" name="seller_availability_amount" id="seller_availability_amount" required>
+<option value="Less than $500 per month" <?php if($data[0]['seller_availability_amount'] == 'Less than $500 per month'){?> selected <?php } ?>>Less than $500 per month</option>
+<option value="Between $500 and $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'Between $500 and $1000 per month'){?> selected <?php } ?>>Between $500 and $1000 per month</option>
+<option value="More than $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'More than $1000 per month'){?> selected <?php } ?>>More than $1000 per month</option>
 </select>
 </div>
 </div>
@@ -85,30 +87,31 @@
 </select>
 </div>
 <div><a class="cancel-btn can-1" href="javascript:void(0)">Cancel</a></div>
-<div>
-<a class="add-btn" id="btn1" href="javascript:void(0)">Add</a> 
-<!--<a class="add-btn" id="btn6" style="display:none" href="javascript:void(0)">Update</a>-->
-</div>
+<div><a class="add-btn" id="btn1" href="javascript:void(0)">Add</a></div>
 <div class="clearfix"></div>
 </div>
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="lang">
 <tr class="table-header">
-<td class="table-data">Language</td>
-<td class="table-data">Level</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data data-col"><a class="new-1" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
+<td class="table-data2">Language</td>
+<td class="table-data2">Level</td>
+<td class="table-data2 data-col"><a class="new-1" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
 if(count($languages) > 0){
 foreach($languages as $language){	
 ?>
-<tr>
-<td class="table-data"><?php echo $language['seller_language']; ?></td>
-<td class="table-data"><?php echo $language['seller_language_level']; ?></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $language['seller_language']; ?></td>
+<td class="table-data2"><?php echo $language['seller_language_level']; ?></td>
+<td class="table-data3">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</td>
 </tr>
 <?php
 }
@@ -151,21 +154,25 @@ foreach($languages as $language){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="skill">
 <tr class="table-header">
-<td class="table-data">Skill</td>
-<td class="table-data">Level</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data data-col"><a class="new-2" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
+<td class="table-data2">Skill</td>
+<td class="table-data2">Level</td>
+<td class="table-data2 data-col"><a class="new-2" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
 if(count($skills) > 0){
 foreach($skills as $skill){	
 ?>
-<tr>
-<td class="table-data"><?php echo $skill['seller_skill']; ?></td>
-<td class="table-data"><?php echo $skill['seller_skill_level']; ?></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $skill['seller_skill']; ?></td>
+<td class="table-data2"><?php echo $skill['seller_skill_level']; ?></td>
+<td class="table-data3 ">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+</ul>
+</div>
+</td>
 </tr>
 <?php
 }
@@ -256,21 +263,25 @@ foreach($skills as $skill){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="edu">
 <tr class="table-header">
-<td class="table-data">Degree</td>
-<td class="table-data">Year</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data data-col"><a class="new-3" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
+<td class="table-data2">Degree</td>
+<td class="table-data2">Year</td>
+<td class="table-data2 data-col"><a class="new-3" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
 if(count($educations) > 0){
 foreach($educations as $education){	
 ?>
-<tr>
-<td class="table-data"><?php echo $education['seller_edu_degree']; ?></td>
-<td class="table-data"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $education['seller_edu_degree']; ?></td>
+<td class="table-data2"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></td>
+<td class="table-data3 ">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+</ul>
+</div>
+</td>
 </tr>
 <?php
 }
@@ -320,21 +331,25 @@ foreach($educations as $education){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="certificate">
 <tr class="table-header">
-<td class="table-data">Certificate Or Award</td>
-<td class="table-data">Year</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data data-col"><a class="new-4" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
+<td class="table-data2">Certificate Or Award</td>
+<td class="table-data2">Year</td>
+<td class="table-data2 data-col"><a class="new-4" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
 if(count($certificates) > 0){
 foreach($certificates as $certificate){	
 ?>
-<tr>
-<td class="table-data"><?php echo $certificate['seller_cerified']; ?></td>
-<td class="table-data"><?php echo $certificate['seller_cerified_year']; ?></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $certificate['seller_cerified']; ?></td>
+<td class="table-data2"><?php echo $certificate['seller_cerified_year']; ?></td>
+<td class="table-data3 ">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</td>
 </tr>
 <?php
 }
@@ -377,21 +392,25 @@ foreach($certificates as $certificate){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="portfolio">
 <tr class="table-header">
-<td class="table-data">Description</td>
-<td class="table-data">URL</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data">&nbsp;</td>
-<td class="table-data data-col"><a class="new-5" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
+<td class="table-data2">Description</td>
+<td class="table-data2">URL</td>
+<td class="table-data2 data-col"><a class="new-5" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
 if(count($portfolios) > 0){
 foreach($portfolios as $portfolio){	
 ?>
-<tr>
-<td class="table-data"><?php echo $portfolio['seller_profile_web']; ?></td>
-<td class="table-data"><?php echo $portfolio['seller_profile_web_link']; ?></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-<td class="table-data"><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $portfolio['seller_profile_web']; ?></td>
+<td class="table-data2"><?php echo $portfolio['seller_profile_web_link']; ?></td>
+<td class="table-data3 ">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</td>
 </tr> 
 <?php
 }
@@ -413,18 +432,19 @@ foreach($portfolios as $portfolio){
 <div class="col-lg-9 col-md-9 col-sm-9">
 <div class="pro-sec-right">
 <div class="description-holder">
-<textarea class="des-text" name="" cols="" rows="" placeholder="Please tell us about any hobbies, additional expertise, or anything else you’d like to add."></textarea>
-<p>Description must be between 150-300 characters.</p>
+<textarea class="des-text" required name="seller_description" id="seller_description" cols="" rows="" onKeyUp="countChar(this)" placeholder="Please tell us about any hobbies, additional expertise, or anything else you’d like to add."><?php echo $data[0]['seller_description'];?></textarea>
+<p>Description must be between <span id="charNum">300</span> characters.</p>
 </div>
 </div>
 </div>
 <div class="clearfix"></div>
 </div>
 <div class="profile-sec">
-<input class="seller-pro-btn pull-right" name="" type="button" value="Continue & Create Your First Gig">
+<input class="seller-pro-btn pull-right" name="" type="submit" value="Continue & Create Your First Gig">
 <div class="clearfix"></div>
 </div>
 </div>
+</form>
 </div>
 </section>
 <input type="hidden" value="" name="fild_id" id="fild_id">
@@ -434,7 +454,10 @@ foreach($portfolios as $portfolio){
 <script type="text/javascript">
 $(document).ready(function(){
 $(".can-1").click(function(){
-$(".pro-sec-right-holder-1").hide();
+$(".pro-sec-right-holder-1").hide('slow',function(){
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
 });
 $(".new-1").click(function(){
 $(".pro-sec-right-holder-1").show('slow',function(){
@@ -449,7 +472,10 @@ $('select#language_type option:selected').val('');
 });
 $(document).ready(function(){
 $(".can-2").click(function(){
-$(".pro-sec-right-holder-2").hide();
+$(".pro-sec-right-holder-2").hide('slow',function(){
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
 });
 $(".new-2").click(function(){
 $(".pro-sec-right-holder-2").show('slow',function(){
@@ -463,7 +489,10 @@ $('#skill_name').val('');
 });
 $(document).ready(function(){
 $(".can-3").click(function(){
-$(".pro-sec-right-holder-3").hide();
+$(".pro-sec-right-holder-3").hide('slow',function(){
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
 });
 $(".new-3").click(function(){
 $(".pro-sec-right-holder-3").show('slow',function(){
@@ -478,7 +507,10 @@ $('#education_degree').val('');
 });
 $(document).ready(function(){
 $(".can-4").click(function(){
-$(".pro-sec-right-holder-4").hide();
+$(".pro-sec-right-holder-4").hide('slow',function(){
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
 });
 $(".new-4").click(function(){
 $(".pro-sec-right-holder-4").show('slow',function(){
@@ -493,7 +525,10 @@ $('#certifications_from').val('');
 });
 $(document).ready(function(){
 $(".can-5").click(function(){
-$(".pro-sec-right-holder-5").hide();
+$(".pro-sec-right-holder-5").hide('slow',function(){
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
 });
 $(".new-5").click(function(){
 $(".pro-sec-right-holder-5").show('slow',function(){

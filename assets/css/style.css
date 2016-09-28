@@ -1,7 +1,9 @@
 @charset "utf-8";
+
 /* CSS Document */
+
 @import 'https://fonts.googleapis.com/css?family=Montserrat:400,700';
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+ @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
 @font-face {
 	font-family: oduda;
 	src: url(../fonts/ODUDA-BOLD-DEMO.OTF);
@@ -80,15 +82,15 @@
 	color: #009cef;
 	font-family: oduda;
 }
-.search-frm input[type="search"]::-webkit-input-placeholder {
+ .search-frm input[type="search"]::-webkit-input-placeholder {
  color:#009cef;
  opacity:1;
 }
-.search-frm input[type="search"]::-moz-placeholder {
+ .search-frm input[type="search"]::-moz-placeholder {
  color:#009cef;
  opacity:1;
 }
-.search-frm input[type="search"]:-ms-input-placeholder {
+ .search-frm input[type="search"]:-ms-input-placeholder {
  color:#009cef;
  opacity:1;
 }
@@ -201,6 +203,7 @@
 	background: #6aa326;
 	text-align: center;
 	/*border-bottom:2px solid #4c7408;*/
+
 	border-radius: 5px;
 	padding: 10px 8px;
 }
@@ -553,6 +556,7 @@
 	height: 100%;
 }
 /*Popup*/
+
 .login-pop {
 	margin: 20px 0;
 	background: #fff;
@@ -712,10 +716,13 @@ footer .modal {
 	max-width: 100%;
 }
 /*********************samar***********************/
+
 .navbar-collapse {
 	padding-left: 32px!important;
 }
 /*******carasual************/
+
+
 
 .spon-bottom {
 	background: #344e85;
@@ -777,6 +784,8 @@ footer .modal {
 	position: relative;
 }
 /*** Navigation ***/
+
+
 
 .nbs-flexisel-nav-left, .nbs-flexisel-nav-right {
 	width: 70px;
@@ -859,6 +868,9 @@ footer .modal {
 	width: 90%;
 }
 /*************************search*****************************/
+
+
+
 
 
 .search {
@@ -1178,6 +1190,8 @@ span.card {
 }
 /***************************************banner********************************************/
 
+
+
 .transition-timer-carousel .carousel-caption {
 	width: 45%;
 	left: 50%;
@@ -1192,7 +1206,9 @@ span.card {
 }
  @media (min-width: 970px) {
 /* Lower the font size of the carousel caption header so that our caption
+
     doesn't take up the full image/slide on smaller screens */
+
 .transition-timer-carousel .carousel-caption .carousel-caption-header {
 	font-size: 36px;
 }
@@ -1215,8 +1231,11 @@ span.card {
 }
 .transition-timer-carousel .transition-timer-carousel-progress-bar.animate {
 	/* We make the transition time shorter to avoid the slide transitioning
+
     before the timer bar is "full" - change the 4.25s here to fit your
+
     carousel's transition time */
+
 	-webkit-transition: width 4.25s linear;
 	-moz-transition: width 4.25s linear;
 	-o-transition: width 4.25s linear;
@@ -1226,7 +1245,7 @@ span.card {
 	top: 165px;
 	font-size: 100px;
 }
-@media only screen and (max-width: 480px) {
+ @media only screen and (max-width: 480px) {
 .glyphicon {
 	top: 45px;
 	font-size: 20px;
@@ -1578,6 +1597,7 @@ span.card {
 	outline: none;
 }
 /******************************seller-profile-page*****************************/
+
 .seller-profile-banner {
 	margin-bottom: 20px;
 }
@@ -1617,13 +1637,13 @@ span.card {
 .pro-holder {
 	border: 1px solid #ccc;
 	padding: 10px;
-	width: 25%;
+	width: 32%;
 	border-radius: 4px;
-	margin-right: 20px;
+	margin-right: 11px;
 	float: left;
 }
 .pro-select {
-	width: 84%;
+	width: 88%;
 	border: 0;
 	font-size: 15px;
 	color: #999;
@@ -1638,12 +1658,12 @@ span.card {
 .pro-holder-2 {
 	border: 1px solid #ccc;
 	padding: 10px 20px;
-	width: 25%;
+	width: 32%;
 	border-radius: 4px;
 	font-size: 15px;
 	color: #999;
 	float: left;
-	margin-right: 20px;
+	margin-right: 11px;
 	margin-bottom: 20px;
 }
 .pro-holder-2 .fa {
@@ -1667,6 +1687,36 @@ span.card {
 	padding: 10px;
 	font-size: 15px;
 	color: #999;
+}
+.pro-sec-right .table-data2 {
+	padding: 10px;
+	font-size: 15px;
+	color: #999;
+}
+.pro-sec-right .table-data3 {
+	padding: 10px;
+	font-size: 15px;
+	color: #999;
+}
+.table-icon {
+	text-align: right;
+	margin-right: -15px;
+	opacity: 0;
+	transition-duration: 0.2s;
+	transition-property: all;
+}
+.table-row1:hover .table-icon {
+	opacity: 1;
+	margin-right: 0px;
+}
+.table-icon ul {
+	margin: 0;
+	padding: 0;
+}
+.table-icon ul li {
+	list-style: none;
+	margin-left: 10px;
+	display: inline-block;
 }
 .pro-sec-right .data-col {
 	text-align: right;
@@ -1785,7 +1835,7 @@ span.card {
 	margin-right: 0;
 }
 .cancel-btn {
-	padding: 7px 20px;
+	padding: 7px 10px;
 	color: #333;
 	border: 1px solid #ccc;
 	font-size: 15px;
@@ -1822,9 +1872,9 @@ span.card {
 	color: #999;
 	float: left;
 	font-size: 15px;
-	margin-right: 20px;
+	margin-right: 17px;
 	padding: 10px;
-	width: 32%;
+	width: 36%;
 }
 .pro-select2 {
 	border: 0 none;
