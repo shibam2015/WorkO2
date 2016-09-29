@@ -77,6 +77,7 @@ public function seller_update_profile($id,$data)
 	if (!empty($id)) {
 	$this -> db -> where('id', $id);
 	$this -> db -> update(TBL_SELLER, $data);
+	//$this->db->last_query();
 	return true;
 	} else {
 	return false;

@@ -93,8 +93,8 @@
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="lang">
 <tr class="table-header">
-<td class="table-data2">Language</td>
-<td class="table-data2">Level</td>
+<td class="table-data2 header-col">Language</td>
+<td class="table-data2 header-col">Level</td>
 <td class="table-data2 data-col"><a class="new-1" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -154,8 +154,8 @@ foreach($languages as $language){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="skill">
 <tr class="table-header">
-<td class="table-data2">Skill</td>
-<td class="table-data2">Level</td>
+<td class="table-data2 header-col">Skill</td>
+<td class="table-data2 header-col">Level</td>
 <td class="table-data2 data-col"><a class="new-2" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -263,8 +263,8 @@ foreach($skills as $skill){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="edu">
 <tr class="table-header">
-<td class="table-data2">Degree</td>
-<td class="table-data2">Year</td>
+<td class="table-data2 header-col">Degree</td>
+<td class="table-data2 header-col">Year</td>
 <td class="table-data2 data-col"><a class="new-3" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -331,8 +331,8 @@ foreach($educations as $education){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="certificate">
 <tr class="table-header">
-<td class="table-data2">Certificate Or Award</td>
-<td class="table-data2">Year</td>
+<td class="table-data2 header-col">Certificate Or Award</td>
+<td class="table-data2 header-col">Year</td>
 <td class="table-data2 data-col"><a class="new-4" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -392,8 +392,8 @@ foreach($certificates as $certificate){
 <div style="border: 1px solid #ccc;">
 <table style="width:100%" id="portfolio">
 <tr class="table-header">
-<td class="table-data2">Description</td>
-<td class="table-data2">URL</td>
+<td class="table-data2 header-col">Description</td>
+<td class="table-data2 header-col">URL</td>
 <td class="table-data2 data-col"><a class="new-5" href="javascript:void(0)"><i class="fa fa-plus" aria-hidden="true"></i> Add New</a></td>
 </tr>
 <?php
@@ -440,7 +440,7 @@ foreach($portfolios as $portfolio){
 <div class="clearfix"></div>
 </div>
 <div class="profile-sec">
-<input class="seller-pro-btn pull-right" name="" type="submit" value="Continue & Create Your First Gig">
+<input class="seller-pro-btn pull-right" name="" type="submit" value="Continue">
 <div class="clearfix"></div>
 </div>
 </div>

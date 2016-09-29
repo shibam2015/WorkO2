@@ -3,13 +3,13 @@
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //Image Scaler
 $(function(){
-  $('#finish').hide();
-  $('#seller_reg2').hide();	
-  $('#seller_reg3').hide();	
-  $('#re2').hide();	
-  $(".scale").imageScale({ 
-  rescaleOnResize: true
-});
+	  $('#finish').hide();
+	  $('#seller_reg2').hide();	
+	  $('#seller_reg3').hide();	
+	  $('#re2').hide();	
+	  $(".scale").imageScale({ 
+	  rescaleOnResize: true
+	  });
 });
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $(function(){

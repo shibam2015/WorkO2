@@ -41,7 +41,7 @@
 </div>
 <div class="clearfix"></div>
 </div>
-<div class="seller-profile3-bot"> <a class="cancel-btn cancel-btn-2" href="<?php echo site_url('seller/update_seller_details'); ?>">Cancel</a>
+<div class="seller-profile3-bot"> <a class="cancel-btn cancel-btn-2" href="<?php echo site_url('seller/seller_view_profile_two'); ?>">Cancel</a>
 <input class="seller-pro-btn pull-right" name="" type="button" value="Save & Continue">
 <div class="clearfix"></div>
 </div>

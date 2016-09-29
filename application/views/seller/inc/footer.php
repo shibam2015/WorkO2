@@ -55,3 +55,4 @@
 </div>
 </div>
 </footer>
+<?php include('assets/js/dropzone.php'); ?>

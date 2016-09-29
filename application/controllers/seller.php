@@ -309,9 +309,27 @@ public function delete_seller_data()
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
+public function seller_view_profile_two()
+{
+	if($this->is_login()){
+	$session_details = $this->session->all_userdata();		
+	$msg['data'] = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
+	$msg['languages'] = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['skills'] = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$this->load->view('seller/profile_2',$msg);	
+	}else{
+	$this->index();		
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
 public function update_seller_details()
 {
 	if($this->is_login()){
+	$posts = $this->input->post();
 	$user_id = $this->input->post('user_id');
 	if(!empty($user_id)){
 	$get_seller_availability_type = $this->input->post('seller_availability_type');
@@ -326,22 +344,35 @@ public function update_seller_details()
 	);
 	$this->status = $this->sellers->seller_update_data(TBL_SELLER,$data,'id',$user_id);
 	if($this->status != false){
-	$session_details = $this->session->all_userdata();		
-	$msg['data'] = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
-	$msg['languages'] = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['skills'] = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
-	$this->load->view('seller/profile_2',$msg);		
+	unset($posts);	
+	$this->seller_view_profile_two();		
 	}else{
 	$this->index();		
 	}
 	}else{
-	$this->load->view('seller/profile_2');	
+	unset($posts);	
+	$this->seller_view_profile_two();
 	}
 	}else{
 	$this->index();		
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function profile_picture()
+{
+	if(!empty($_FILES)){
+	$id = $this->input->post('user_id');
+	$preFix = time();
+	$targetDir = "upload/";
+	$fileName = $preFix.'_'.$_FILES['file']['name'];
+	$targetFile = $targetDir.$fileName;
+	if(move_uploaded_file($_FILES['file']['tmp_name'],$targetFile)){
+	$data = array(
+		"seller_profile_pic"  => $fileName,
+	);		
+	$this->status = $this->sellers->seller_update_profile($id,$data);
+	}
 	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
@@ -356,17 +387,6 @@ public function seller_view_job_one()
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
-public function seller_job_one()
-{
-	if($this->is_login()){
-	
-	
-	
-	
-	}else{
-	$this->index();		
-	}
-}
 
 
 /* ========================================================================================= */	

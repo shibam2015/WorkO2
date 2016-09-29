@@ -8,6 +8,7 @@
 <title><?php echo SITE_TITLE; ?></title>
 <link rel="stylesheet" href="<?php echo site_url('assets/css/style.css'); ?>" type="text/css">
 <link rel="stylesheet" href="<?php echo site_url('assets/css/media.css'); ?>" type="text/css">
+<link rel="stylesheet" href="<?php echo site_url('assets/css/dropzone.css'); ?>" type="text/css">
 <link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap.css'); ?>" type="text/css">
 <link rel="stylesheet" href="<?php echo site_url('assets/css/bootstrap-theme.css'); ?>" type="text/css">
 <link rel="stylesheet" href="<?php echo site_url('assets/css/font-awesome.min.css'); ?>" type="text/css">

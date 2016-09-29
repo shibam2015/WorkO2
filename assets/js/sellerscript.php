@@ -324,7 +324,18 @@ $("#btn6").click(function(){
 	data: 'seller_description='+ desc +'&id='+ id ,
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("The Profile Data Updated");
+	//+++++++++++++++++	
+	swal({   
+	title: "The Profile Data Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	location.reload();
+	});
+	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");
 	} 			
@@ -336,7 +347,7 @@ $("#btn6").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn8").click(function(){
-	var fild_id = 0;
+	var fild_id = $('#fild_id').val();
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var skill = $('#seller_skill').val();
 	if(skill == '' || skill == null){
@@ -357,11 +368,30 @@ $("#btn8").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-3").hide();
-	$(".show-3").show();
-	$('#seller_skill').val('');
+	$(".des-area-3").hide('fast',function(){
+	$(".show-3").show('fast',function(){
+	location.reload();		
+	});	
+	});
 	});
 	//++++++++++++++++++
+	}else if(res == 'Updated'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Skill Has Been Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-3").hide('fast',function(){
+	$(".show-3").show('fast',function(){
+	location.reload();	
+	});
+	});
+	});
+	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
@@ -373,7 +403,7 @@ $("#btn8").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn9").click(function(){
-	var fild_id = 0;
+	var fild_id = $('#fild_id').val();
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var seller_edu_country       = $('#seller_edu_country option:selected').val();
 	var seller_edu_collage_name  = $('#seller_edu_collage_name').val();
@@ -424,10 +454,28 @@ $("#btn9").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-4").hide();
-	$(".show-4").show();
-	$('#seller_edu_collage_name').val(' ');
-	$('#seller_edu_degree').val(' ')
+	$(".des-area-4").hide('fast',function(){
+	$(".show-4").show('fast',function(){
+	location.reload();		
+	});	
+	});
+	});
+	//++++++++++++++++++	
+	}else if(res == 'Updated'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Education Has Been Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-4").hide('fast',function(){
+	$(".show-4").show('fast',function(){
+	location.reload();	
+	});
+	});
 	});
 	//++++++++++++++++++	
 	}else{
@@ -447,7 +495,7 @@ $("#btn9").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn10").click(function(){
-	var fild_id = 0;
+	var fild_id = $('#fild_id').val();
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var seller_cerified         = $('#seller_cerified').val();
 	var seller_cerified_from    = $('#seller_cerified_from').val();
@@ -483,10 +531,28 @@ $("#btn10").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-5").hide();
-	$(".show-5").show();
-	$('#seller_cerified').val(' ');
-	$('#seller_cerified_from').val(' ')
+	$(".des-area-5").hide('fast',function(){
+	$(".show-5").show('fast',function(){
+	location.reload();	
+	});	
+	});
+	});
+	//++++++++++++++++++	
+	}else if(res == 'Updated'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Certification Has Been Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-5").hide('fast',function(){
+	$(".show-5").show('fast',function(){
+	location.reload();	
+	});
+	});
 	});
 	//++++++++++++++++++	
 	}else{
@@ -502,7 +568,8 @@ $("#btn10").click(function(){
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn11").click(function(){
-	var fild_id = 0;
+	
+	var fild_id = $('#fild_id').val();
 	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
 	var seller_profile_web         = $('#seller_profile_web').val();
 	var seller_profile_web_link    = $('#seller_profile_web_link').val();
@@ -533,10 +600,28 @@ $("#btn11").click(function(){
 	confirmButtonText: "OK",   
 	closeOnConfirm: true 
 	}, function(){   
-	$(".des-area-6").hide();
-	$(".show-6").show();
-	$('#seller_profile_web').val(' ');
-	$('#seller_profile_web_link').val(' ')
+	$(".des-area-6").hide('fast',function(){
+	$(".show-6").show('fast',function(){
+	location.reload();	
+	});	
+	});
+	});
+	//++++++++++++++++++	
+	}else if(res == 'Updated'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Portfolio Has Been Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	$(".des-area-6").hide('fast',function(){
+	$(".show-6").show('fast',function(){
+	location.reload();	
+	});
+	});
 	});
 	//++++++++++++++++++	
 	}else{
@@ -606,18 +691,41 @@ var editDataLanguage = function(id,type,data1,data2){
 var editDataSkill = function(id,type,data1,data2){
 	$('#fild_id').val('');
 	$('#fild_type').val('');
+	if(type == 'Skill2'){
+	$('#btn8').html('Update');
+	$(".des-area-3").show('slow',function(){
+	$('#seller_skill').val(data1);
+	$('#seller_skill_level').val(data2);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);
+	});	
+	}else{
 	$('#btn2').html('Update');
 	$(".pro-sec-right-holder-2").show('slow',function(){
 	$('#skill_name').val(data1);
 	$('#skill_level').val(data2);
 	$('#fild_id').val(id);
-	$('#fild_type').val(type);		
+	$('#fild_type').val(type);
 	});
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 var editDataEducation = function(id,type,data1,data2,data3,data4,data5,data6){
 	$('#fild_id').val('');
 	$('#fild_type').val('');
+	if(type == 'Education2'){
+	$('#btn9').html('Update');
+	$(".des-area-4").show('slow',function(){
+	$('#seller_edu_country').val(data1);
+	$('#seller_edu_collage_name').val(data2);
+	$('#seller_edu_title').val(data3);
+	$('#seller_edu_degree').val(data4);
+	$('#seller_edu_from').val(data5);
+	$('#seller_edu_to').val(data6);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);		
+	});
+	}else{
 	$('#btn3').html('Update');
 	$(".pro-sec-right-holder-3").show('slow',function(){
 	$('#education_country').val(data1);
@@ -629,11 +737,22 @@ var editDataEducation = function(id,type,data1,data2,data3,data4,data5,data6){
 	$('#fild_id').val(id);
 	$('#fild_type').val(type);		
 	});
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 var editDataCertificate = function(id,type,data1,data2,data3){
 	$('#fild_id').val('');
 	$('#fild_type').val('');
+	if(type == 'Certificate2'){
+	$('#btn10').html('Update');
+	$(".des-area-5").show('slow',function(){
+	$('#seller_cerified').val(data1);
+	$('#seller_cerified_from').val(data2);
+	$('#seller_cerified_year').val(data3);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);		
+	});	
+	}else{
 	$('#btn4').html('Update');
 	$(".pro-sec-right-holder-4").show('slow',function(){
 	$('#certifications_name').val(data1);
@@ -642,11 +761,21 @@ var editDataCertificate = function(id,type,data1,data2,data3){
 	$('#fild_id').val(id);
 	$('#fild_type').val(type);		
 	});
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 var editDataPortfolio = function(id,type,data1,data2){
 	$('#fild_id').val('');
 	$('#fild_type').val('');
+	if(type == 'Portfolio2'){
+	$('#btn11').html('Update');
+	$(".des-area-6").show('slow',function(){
+	$('#seller_profile_web').val(data1);
+	$('#seller_profile_web_link').val(data2);	
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);	
+	});	
+	}else{
 	$('#btn5').html('Update');
 	$(".pro-sec-right-holder-5").show('slow',function(){
 	$('#profile_description').val(data1);
@@ -654,6 +783,7 @@ var editDataPortfolio = function(id,type,data1,data2){
 	$('#fild_id').val(id);
 	$('#fild_type').val(type);	
 	});
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 //COUNT CHARACTERS IN TEXTAREA

@@ -1681,7 +1681,10 @@ span.card {
 	color: #333;
 }
 .pro-sec-right .table-header {
-	background: #f4f4f4;
+	background: #4264aa;
+}
+.pro-sec-right .table-header .header-col {
+	color: #fff;
 }
 .pro-sec-right .table-data {
 	padding: 10px;
@@ -1692,6 +1695,7 @@ span.card {
 	padding: 10px;
 	font-size: 15px;
 	color: #999;
+	width: 43%;
 }
 .pro-sec-right .table-data3 {
 	padding: 10px;
@@ -1723,10 +1727,10 @@ span.card {
 	color: #00b22d;
 }
 .pro-sec-right .data-col .fa {
-	color: #00b22d;
+	color: #fff;
 }
 .pro-sec-right .data-col a {
-	color: #00b22d;
+	color: #fff;
 	text-decoration: none;
 }
 .pro-sec-right .no-btn {
@@ -2077,4 +2081,47 @@ span.card {
 	font-size: 28px;
 	color: #666;
 	margin-bottom: 20px;
+}
+/********************28-09-2016**********************/
+.des-holder .pro-holder {
+	width: 100%;
+	margin-right: 0;
+	margin-bottom: 6px;
+}
+.des-holder .pro-holder .fa {
+	width: 25px;
+	padding-right: 0;
+}
+.des-holder .pro-holder .pro-select {
+	width: 92%;
+}
+.des-holder-table {
+	border: 1px solid #ccc;
+	margin-top: 10px;
+}
+.des-holder-table .table-header {
+	background: #488104 none repeat scroll 0 0;
+}
+.des-holder-table .table-header .header-color {
+	color: #fff;
+	padding: 3px 4px;
+	font-size: 14px;
+}
+.des-holder-table .table-data2 {
+	color: #999;
+	font-size: 12px;
+	padding: 1px 5px;
+	width: 43%;
+}
+.des-holder-table .table-data3 {
+	color: #999;
+	font-size: 14px;
+	padding: 1px 5px;
+}
+.des-holder-table .table-icon ul li {
+	margin-left: 5px;
+	font-size: 12px;
+}
+.des-holder-table .table-icon ul li .fa {
+	margin-right: 0px;
 }
