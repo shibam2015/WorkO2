@@ -310,6 +310,54 @@ $("#btn5").click(function(){
 
 $(document).ready(function(){
 //START
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
+$("#btn15").click(function(){
+	var fild_id = $('#fild_id').val();	
+	var id = <?php echo $SESSION_UERS_DATA[0]['id']; ?>;
+	var language_name = $('#language_name').val();
+	var language_type = $('select#language_type option:selected').val();
+	if(language_name == '' || language_name == null){
+	sweetAlert('OPPS!! sorry the fild is mandatory');	
+	}else{
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/update_language'); ?>",
+	data: 'language_name='+ language_name +'&id='+ id + '&language_type=' + language_type+ '&fild_id=' + fild_id,
+	success: function (res) {
+	if(res == 'Success'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Language Has Been Added",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	location.reload();
+	});
+	//++++++++++++++++++
+	}else if(res == 'Updated'){
+	//+++++++++++++++++	
+	swal({   
+	title: "The Language Has Been Updated",  
+	type: "success",   
+	showCancelButton: false,   
+	confirmButtonColor: "#8CD4F5",   
+	confirmButtonText: "OK",   
+	closeOnConfirm: true 
+	}, function(){   
+	location.reload();
+	});
+	//++++++++++++++++++
+	} else{
+	sweetAlert("Oops...", "Something went wrong!");	
+	} 			
+	}
+	});		
+	}
+});
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++			
 $("#btn6").click(function(){
@@ -679,6 +727,15 @@ var deleteData = function(id,type){
 var editDataLanguage = function(id,type,data1,data2){
 	$('#fild_id').val('');
 	$('#fild_type').val('');
+	if(type == 'Language2'){
+	$('#btn15').html('Update');	
+	$(".des-area-15").show('slow',function(){
+	$('#language_name').val(data1);
+	$('#language_type').val(data2);
+	$('#fild_id').val(id);
+	$('#fild_type').val(type);
+	});	
+	}else{
 	$('#btn1').html('Update');	
 	$(".pro-sec-right-holder-1").show('slow',function(){
 	$('#language_name').val(data1);
@@ -686,6 +743,7 @@ var editDataLanguage = function(id,type,data1,data2){
 	$('#fild_id').val(id);
 	$('#fild_type').val(type);	
 	});
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 var editDataSkill = function(id,type,data1,data2){

@@ -120,8 +120,6 @@ if (defined('ENVIRONMENT'))
  */
 	// $assign_to_config['name_of_config_item'] = 'value of config item';
 
-
-
 // --------------------------------------------------------------------
 // END OF USER CONFIGURABLE SETTINGS.  DO NOT EDIT BELOW THIS LINE
 // --------------------------------------------------------------------

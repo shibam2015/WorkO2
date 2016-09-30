@@ -95,6 +95,65 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 </ul>
 </div>
 <div class="buyer-left-holder no-border">
+<h1>Language<span><i class="fa fa-question-circle-o" aria-hidden="true"></i>
+<div class="buyer-tag">Tell us more about yourself. Buyers are also interested in learning about you as a person.</div>
+<div class="sub-nav-triangle"></div>
+</span> <span class="show-15">View</span> </h1>
+<h4>You don't have any Language.</h4>
+<div style="display:none;"  class="des-area-15">
+<div class="des-holder">
+<div class="des-holder-lft">
+<input class="form-control" name="language_name" id="language_name" value="" type="text">
+</div>
+<div class="des-holder-rht">
+<select class="form-control" name="language_type" id="language_type">
+<option value="Basic">Basic</option>
+<option value="Conversational">Conversational</option>
+<option value="Fluent">Fluent</option>
+<option value="Native or Bilingual">Native or Bilingual</option>
+</select>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="dse-holder">
+<div class="des-holder-table">
+<table style="width:100%">
+<tr class="table-header">
+<td class="table-data2 header-color">Language</td>
+<td class="table-data2 header-color">Level</td>
+<td class="table-data3"></td>
+</tr>
+<?php
+if(count($languages) > 0){
+foreach($languages as $language){	
+?>
+<tr class="table-row1">
+<td class="table-data2"><?php echo $language['seller_language']; ?></td>
+<td class="table-data2"><?php echo $language['seller_language_level']; ?></td>
+<td class="table-data3">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language2','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</td>
+</tr>
+<?php
+}
+}
+?>  
+</table>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="bot-area">
+<div class="hide-15">Cancel</div>
+<div class="update-btn2" id="btn15">Add</div>
+</div>
+</div>
+</div>
+<div class="buyer-left-holder no-border">
 <h1>Skills<span><i class="fa fa-question-circle-o" aria-hidden="true"></i>
 <div class="buyer-tag">Tell us more about yourself. Buyers are also interested in learning about you as a person.</div>
 <div class="sub-nav-triangle"></div>
@@ -118,7 +177,7 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 <div class="des-holder-table">
 <table style="width:100%">
 <tr class="table-header">
-<td class="table-data2 header-color">Language</td>
+<td class="table-data2 header-color">Skill</td>
 <td class="table-data2 header-color">Level</td>
 <td class="table-data3"></td>
 </tr>
@@ -487,6 +546,25 @@ $('#btn11').html('Add');
 $(".show-6").click(function(){
 $(".des-area-6").show('slow',function(){
 $(".show-6").hide('slow');
+$('#fild_id').val('0');
+$('#fild_type').val('');	
+});
+});
+});
+$(document).ready(function(){
+$(".hide-15").click(function(){
+$(".des-area-15").hide('slow',function(){
+$(".show-15").show('slow');	
+$('#fild_id').val('0');
+$('#fild_type').val('');
+$('#language_name').val('');
+$('#language_type').val($("#seller_cerified_year option:first").val());
+$('#btn15').html('Add');
+});
+});
+$(".show-15").click(function(){
+$(".des-area-15").show('slow',function(){
+$(".show-15").hide('slow');
 $('#fild_id').val('0');
 $('#fild_type').val('');	
 });

@@ -1487,6 +1487,26 @@ span.card {
 	text-decoration: none;
 	outline: none;
 }
+.show-15 {
+	float: right;
+	color: #4264aa;
+	font-size: 15px;
+	cursor: pointer;
+}
+.des-area-15 {
+	border: 1px solid #ccc;
+	padding: 5px;
+	color: #666;
+	font-size: 12px;
+}
+.hide-15 {
+	color: #333;
+	font-size: 16px;
+	padding: 5px 10px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	cursor: pointer;
+}
 .show-3 {
 	float: right;
 	color: #4264aa;
