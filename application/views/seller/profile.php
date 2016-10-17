@@ -23,22 +23,43 @@
 <div class="pro-holder"> <i class="fa fa-shopping-bag" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_type" id="seller_availability_type" required>
 <option value="">I want to work</option>
-<option value="Per Time" <?php if($data[0]['seller_availability_type'] == 'Per Time'){?> selected <?php } ?>>Part time</option>
-<option value="Full Time" <?php if($data[0]['seller_availability_type'] == 'Full Time'){?> selected <?php } ?>>Full time</option>
+<?php
+if(count($iwtw_l) > 0){
+foreach($iwtw_l as $iwtw){
+?>
+<option value="<?php echo $iwtw['id']; ?>" <?php if($data[0]['seller_availability_type'] == $iwtw['id']){?> selected <?php } ?>><?php echo $iwtw['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="pro-holder"> <i class="fa fa-clock-o" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_time" id="seller_availability_time" required>
-<option value="Less than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'Less than 30 hours a week'){?> selected <?php } ?>>Less than 30 hours a week</option>
-<option value="More than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'More than 30 hours a week'){?> selected <?php } ?>>More than 30 hours a week</option>
-<option value="As needed" <?php if($data[0]['seller_availability_time'] == 'As needed'){?> selected <?php } ?>>As needed</option>
+<option value="">I can work</option>
+<?php
+if(count($icw_l) > 0){
+foreach($icw_l as $icw){
+?>
+<option value="<?php echo $icw['id']; ?>" <?php if($data[0]['seller_availability_time'] == $icw['id']){?> selected <?php } ?>><?php echo $icw['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="pro-holder"> <i class="fa fa-usd" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_amount" id="seller_availability_amount" required>
-<option value="Less than $500 per month" <?php if($data[0]['seller_availability_amount'] == 'Less than $500 per month'){?> selected <?php } ?>>Less than $500 per month</option>
-<option value="Between $500 and $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'Between $500 and $1000 per month'){?> selected <?php } ?>>Between $500 and $1000 per month</option>
-<option value="More than $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'More than $1000 per month'){?> selected <?php } ?>>More than $1000 per month</option>
+<option value="">I would like to earn</option>
+<?php
+if(count($iwlte_l) > 0){
+foreach($iwlte_l as $iwlte){
+?>
+<option value="<?php echo $iwlte['id']; ?>" <?php if($data[0]['seller_availability_amount'] == $iwlte['id']){?> selected <?php } ?>><?php echo $iwlte['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 </div>
@@ -79,11 +100,16 @@
 </div>
 <div class="pro-holder-3">
 <select class="pro-select2"  name="language_type" id="language_type">
-<option value="">Select</option>
-<option value="Basic">Basic</option>
-<option value="Conversational">Conversational</option>
-<option value="Fluent">Fluent</option>
-<option value="Native or Bilingual">Native or Bilingual</option>
+<option value="">Select Language</option>
+<?php
+if(count($lang_l) > 0){
+foreach($lang_l as $lang){
+?>
+<option value="<?php echo $lang['id']; ?>"><?php echo $lang['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div><a class="cancel-btn can-1" href="javascript:void(0)">Cancel</a></div>
@@ -139,9 +165,16 @@ foreach($languages as $language){
 </div>
 <div class="pro-holder-3">
 <select class="pro-select2" id="skill_level"  name="skill_level">
-<option value="Beginner">Beginner</option>
-<option value="Intermediate">Intermediate</option>
-<option value="Expert">Expert</option>
+<option value="">Select Skill</option>
+<?php
+if(count($exp_l) > 0){
+foreach($exp_l as $exp){
+?>
+<option value="<?php echo $exp['id']; ?>"><?php echo $exp['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div><a class="cancel-btn can-2" href="javascript:void(0)">Cancel</a></div>
@@ -220,12 +253,16 @@ foreach($skills as $skill){
 <div class="pro-sec-right-holder-row-2">
 <div class="pro-holder-5">
 <select class="pro-select2"  name="education_title" id="education_title">
-<option value="">Title</option>
-<option value="B.A.">B.A.</option>
-<option value="B.Sc.">B.Sc.</option>
-<option value="M.A.">M.A.</option>
-<option value="M.Sc.">M.Sc.</option>
-<option value="J.D.">J.D.</option>
+<option value="">Select Title</option>
+<?php
+if(count($title_l) > 0){
+foreach($title_l as $title){
+?>
+<option value="<?php echo $title['id']; ?>"><?php echo $title['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="pro-holder-6">
@@ -237,16 +274,26 @@ foreach($skills as $skill){
 <div class="pro-holder-7">
 <select class="pro-select2" name="education_year_from" id="education_year_from">
 <option value="">From</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_1=date('Y');$y_1>=1960; $y_1--){
+?>
+<option value="<?php echo $y_1; ?>"><?php echo $y_1; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 <div class="pro-holder-8">-</div>
 <div class="pro-holder-7">
 <select class="pro-select2"  name="education_year_to" id="education_year_to">
 <option value="">To</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_2=date('Y');$y_2>=1960; $y_2--){
+?>
+<option value="<?php echo $y_2; ?>"><?php echo $y_2; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 </div>
@@ -316,8 +363,13 @@ foreach($educations as $education){
 <div class="pro-holder-5 margin-right">
 <select class="pro-select2" name="certifications_year" id="certifications_year">
 <option value="">Year</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_3=date('Y');$y_3>=1960; $y_3--){
+?>
+<option value="<?php echo $y_3; ?>"><?php echo $y_3; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 <div><a class="cancel-btn can-4" href="javascript:void(0)">Cancel</a></div>

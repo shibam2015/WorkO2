@@ -17,6 +17,7 @@ public function __construct()
 	//LODING THE MODULE
 	
 	$this->load->model('sellers');	
+	$this->load->model('dashboards');	
 }
 
 public function is_login()
@@ -43,6 +44,12 @@ public function index()
 	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
 	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
 	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['iwtw_l']  = $this->dashboards->select_all(TBL_WANT_TO_WORK);
+	$msg['icw_l']   = $this->dashboards->select_all(TBL_CAN_WORK);
+	$msg['iwlte_l'] = $this->dashboards->select_all(TBL_LIKE_EARN);
+	$msg['lang_l']  = $this->dashboards->select_all(TBL_LIKE_LEVEL);
+	$msg['exp_l']   = $this->dashboards->select_all(TBL_EXP_LEVEL);
+	$msg['title_l'] = $this->dashboards->select_all(TBL_TITLE);
 	$this->load->view('seller/profile',$msg);	
 	}	
 }
@@ -319,6 +326,12 @@ public function seller_view_profile_two()
 	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
 	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
 	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['iwtw_l']  = $this->dashboards->select_all(TBL_WANT_TO_WORK);
+	$msg['icw_l']   = $this->dashboards->select_all(TBL_CAN_WORK);
+	$msg['iwlte_l'] = $this->dashboards->select_all(TBL_LIKE_EARN);
+	$msg['lang_l']  = $this->dashboards->select_all(TBL_LIKE_LEVEL);
+	$msg['exp_l']   = $this->dashboards->select_all(TBL_EXP_LEVEL);
+	$msg['title_l'] = $this->dashboards->select_all(TBL_TITLE);
 	$this->load->view('seller/profile_2',$msg);	
 	}else{
 	$this->index();		

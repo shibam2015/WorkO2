@@ -37,24 +37,45 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 <i class="fa fa-shopping-bag" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_type" id="seller_availability_type" required>
 <option value="">I want to work</option>
-<option value="Per Time" <?php if($data[0]['seller_availability_type'] == 'Per Time'){?> selected <?php } ?>>Part time</option>
-<option value="Full Time" <?php if($data[0]['seller_availability_type'] == 'Full Time'){?> selected <?php } ?>>Full time</option>
+<?php
+if(count($iwtw_l) > 0){
+foreach($iwtw_l as $iwtw){
+?>
+<option value="<?php echo $iwtw['id']; ?>" <?php if($data[0]['seller_availability_type'] == $iwtw['id']){?> selected <?php } ?>><?php echo $iwtw['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="pro-holder">
 <i class="fa fa-clock-o" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_time" id="seller_availability_time" required>
-<option value="Less than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'Less than 30 hours a week'){?> selected <?php } ?>>Less than 30 hours a week</option>
-<option value="More than 30 hours a week" <?php if($data[0]['seller_availability_time'] == 'More than 30 hours a week'){?> selected <?php } ?>>More than 30 hours a week</option>
-<option value="As needed" <?php if($data[0]['seller_availability_time'] == 'As needed'){?> selected <?php } ?>>As needed</option>
+<option value="">I can work</option>
+<?php
+if(count($icw_l) > 0){
+foreach($icw_l as $icw){
+?>
+<option value="<?php echo $icw['id']; ?>" <?php if($data[0]['seller_availability_time'] == $icw['id']){?> selected <?php } ?>><?php echo $icw['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="pro-holder">
 <i class="fa fa-usd" aria-hidden="true"></i>
 <select class="pro-select" name="seller_availability_amount" id="seller_availability_amount" required>
-<option value="Less than $500 per month" <?php if($data[0]['seller_availability_amount'] == 'Less than $500 per month'){?> selected <?php } ?>>Less than $500 per month</option>
-<option value="Between $500 and $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'Between $500 and $1000 per month'){?> selected <?php } ?>>Between $500 and $1000 per month</option>
-<option value="More than $1000 per month" <?php if($data[0]['seller_availability_amount'] == 'More than $1000 per month'){?> selected <?php } ?>>More than $1000 per month</option>
+<option value="">I would like to earn</option>
+<?php
+if(count($iwlte_l) > 0){
+foreach($iwlte_l as $iwlte){
+?>
+<option value="<?php echo $iwlte['id']; ?>" <?php if($data[0]['seller_availability_amount'] == $iwlte['id']){?> selected <?php } ?>><?php echo $iwlte['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="clearfix"></div>
@@ -107,10 +128,16 @@ placeholder="Please tell us about any hobbies, additional expertise, or anything
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="language_type" id="language_type">
-<option value="Basic">Basic</option>
-<option value="Conversational">Conversational</option>
-<option value="Fluent">Fluent</option>
-<option value="Native or Bilingual">Native or Bilingual</option>
+<option value="">Select Language</option>
+<?php
+if(count($lang_l) > 0){
+foreach($lang_l as $lang){
+?>
+<option value="<?php echo $lang['id']; ?>"><?php echo $lang['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="clearfix"></div>
@@ -166,9 +193,16 @@ foreach($languages as $language){
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="seller_skill_level" id="seller_skill_level">
-<option value="Beginner">Beginner</option>
-<option value="Intermediate">Intermediate</option>
-<option value="Expert">Expert</option>
+<option value="">Select Skill</option>
+<?php
+if(count($exp_l) > 0){
+foreach($exp_l as $exp){
+?>
+<option value="<?php echo $exp['id']; ?>"><?php echo $exp['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="clearfix"></div>
@@ -234,16 +268,20 @@ foreach($skills as $skill){
 <div class="des-holder">
 <div class="des-holder-lft">
 <select class="form-control" name="seller_edu_title" id="seller_edu_title">
-<option value="">Title</option>
-<option value="B.A.">B.A.</option>
-<option value="B.Sc.">B.Sc.</option>
-<option value="M.A.">M.A.</option>
-<option value="M.Sc.">M.Sc.</option>
-<option value="J.D.">J.D.</option>
+<option value="">Select Title</option>
+<?php
+if(count($title_l) > 0){
+foreach($title_l as $title){
+?>
+<option value="<?php echo $title['id']; ?>"><?php echo $title['dropdown_value']; ?></option>
+<?php
+}
+}
+?>
 </select>
 </div>
 <div class="des-holder-rht">
-<input class="form-control" name="" type="text" name="seller_edu_degree" id="seller_edu_degree" value="" placeholder="Degree">
+<input class="form-control" type="text" name="seller_edu_degree" id="seller_edu_degree" value="" placeholder="Degree">
 </div>
 <div class="clearfix"></div>
 </div>
@@ -251,15 +289,25 @@ foreach($skills as $skill){
 <div class="des-holder-lft">
 <select class="form-control" name="seller_edu_from" id="seller_edu_from">
 <option value="">From</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_1=date('Y');$y_1>=1960; $y_1--){
+?>
+<option value="<?php echo $y_1; ?>"><?php echo $y_1; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="seller_edu_to" id="seller_edu_to">
 <option value="">To</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_2=date('Y');$y_2>=1960; $y_2--){
+?>
+<option value="<?php echo $y_2; ?>"><?php echo $y_2; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 <div class="clearfix"></div>
@@ -310,18 +358,23 @@ foreach($educations as $education){
 <h4>You don't have any Certification.</h4>
 <div style="display:none;"  class="des-area-5">
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_cerified" id="seller_cerified" value="" placeholder="Certificate or Award">
+<input class="form-control" type="text" name="seller_cerified" id="seller_cerified" value="" placeholder="Certificate or Award">
 <div class="clearfix"></div>
 </div>
 <div class="des-holder">
 <div class="des-holder-lft">
-<input class="form-control" name="" type="text" name="seller_cerified_from" id="seller_cerified_from" value="" placeholder="Certified From (e.g. Adobe)">
+<input class="form-control" type="text" name="seller_cerified_from" id="seller_cerified_from" value="" placeholder="Certified From (e.g. Adobe)">
 </div>
 <div class="des-holder-rht">
 <select class="form-control" name="seller_cerified_year" id="seller_cerified_year">
 <option value="">Year</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
+<?php
+for($y_3=date('Y');$y_3>=1960; $y_3--){
+?>
+<option value="<?php echo $y_3; ?>"><?php echo $y_3; ?></option>
+<?php
+}
+?>
 </select>
 </div>
 <div class="clearfix"></div>
@@ -372,11 +425,11 @@ foreach($certificates as $certificate){
 <h4>You don't have any Portfolio.</h4>
 <div style="display:none;"  class="des-area-6">
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_profile_web" id="seller_profile_web" value="" placeholder="Description">
+<input class="form-control" type="text" name="seller_profile_web" id="seller_profile_web" value="" placeholder="Description">
 <div class="clearfix"></div>
 </div>
 <div class="des-holder">
-<input class="form-control" name="" type="text" name="seller_profile_web_link" id="seller_profile_web_link" value="" placeholder="e.g. http://MyPortfolio.com">
+<input class="form-control" type="text" name="seller_profile_web_link" id="seller_profile_web_link" value="" placeholder="e.g. http://MyPortfolio.com">
 <div class="clearfix"></div>
 </div>
 <div class="dse-holder">
