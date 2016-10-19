@@ -390,20 +390,69 @@ public function profile_picture()
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
-public function seller_view_job_one()
+public function get_subcategory()
+{
+	$get_cate_id = $this->input->post('getVal');
+	$this->data = $this -> dashboards -> select_single(TBL_JOB_SUBCATEGORY,'category_id_FK',$get_cate_id);
+	foreach($this->data as $option){
+	echo '<option value='.$option['subcategory_id'].'>'.$option['subcategory_name'].'</option>'; 	
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
+public function seller_view_job_one($id='')
 {
 	if($this->is_login()){
-	$this->load->view('seller/job_one');
+	if(!empty($id)){
+	$msg['data'] = $this -> dashboards -> select_single(TBL_GIG,'gig_id',$id);
+	}	
+	$msg['category'] = $this->dashboards->select_all(TBL_JOB_CATEGORY);
+	$this->load->view('seller/job_one',$msg);
 	}else{
 	$this->index();		
 	}
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
-
-
+public function job_one($id= '')
+{
+	$data = array();
+	$this->data  = $this->input->post();
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	if(count($this->data) >= 1)
+	{
+	foreach($this->data as $key => $val)
+	{
+		$data[$key] = $val;
+	}
+	}
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	if(!empty($id)){
+	$this->status = $this->dashboards->update(TBL_GIG,$data,'gig_id',$id);
+	$return_id = $id;
+	}else{
+	$this->status = $this->dashboards->insert(TBL_GIG,$data,$data['gig_title']);
+	$return_id = $this->status;
+	}
+	if($this->status != 0){
+	$return_id = $return_id;
+	}else{
+	$return_id = $return_id;
+	}
+	$this->seller_view_job_two($return_id);
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function seller_view_job_two($id='')
+{
+	if($this->is_login()){
+	$msg['id'] = $id;			
+	$this->load->view('seller/job_two',$msg);
+	}else{
+	$this->index();		
+	}	
+}
 /* ========================================================================================= */	
-/* =============================== */	
 /* ========================================================================================= */	
 }
 

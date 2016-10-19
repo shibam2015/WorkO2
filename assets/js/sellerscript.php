@@ -853,4 +853,22 @@ function countChar(val){
 	$('#charNum').text(300 - len);
 	}
 };
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$(function(){
+	$('#category_id').change(function(){
+	var getVal = $('select#category_id option:selected').val();
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/get_subcategory'); ?>",
+	data: { 
+		getVal: getVal, 
+	},
+	success: function (res) {
+	$('#sCategory').show('slow',function(){
+	$('#subcategory_id').append(res);	
+	})		
+	}
+	});		
+	})	
+})	
 </script>

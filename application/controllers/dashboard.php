@@ -922,6 +922,228 @@ public function delete_title($id='')
 }
 
 
+/*=======================================================
+|CATEGORY 
+========================================================*/
+public function view_list_jobc($custome_msg = '')
+{
+	if(!empty($custome_msg)){
+	$msg['msg'] = $custome_msg;
+	}
+	$this->data = $this->dashboards->select_all(TBL_JOB_CATEGORY);
+	$msg['data'] = $this->data;	
+	$this->load->view('admin/list-jobc',$msg);	
+}
+/*=======================================================
+|
+========================================================*/
+public function view_create_jobc($custome_msg = '')
+{
+	if(!empty($custome_msg))
+	$msg['msg'] = $custome_msg;
+	else
+	$msg = '';
+	
+	$this->load->view('admin/create-jobc',$msg);	
+}
+/*=======================================================
+|
+========================================================*/
+public function view_edit_jobc($id='',$custom_msg = '')
+{
+	if(!empty($id)){
+	if (!empty($custom_msg)){
+	$msg['msg'] = $custom_msg;
+	}
+	$this->get_data_single = $this -> dashboards -> select_single(TBL_JOB_CATEGORY,'category_id',$id);
+	$msg['data'] = $this->get_data_single;
+	$this -> load -> view('admin/edit-jobc', $msg);
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
+/*=======================================================
+|
+========================================================*/
+public function create_jobc()
+{
+	$data = array();
+	$this->data  = $this->input->post();
+	
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	if(count($this->data) >= 1)
+	{
+	foreach($this->data as $key => $val)
+	{
+		$data[$key] = $val;
+	}
+	}
+		
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$this->status = $this->dashboards->insert(TBL_JOB_CATEGORY,$data,$data['category_name']);
+	if($this->status != 0){
+	$custome_msg = message_display('insert');
+	}else{
+	$custome_msg = message_display('sorry');	
+	}
+	$this->view_create_jobc($custome_msg);
+}
+/*=======================================================
+|
+========================================================*/
+public function update_jobc($id='')
+{
+	if(!empty($id)){
+	//$data = array();
+	$this->data  = $this->input->post('category_name');
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$data = array(
+		"category_name" => $this->data,
+	);
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$this->status = $this->dashboards->update(TBL_JOB_CATEGORY,$data,'category_id',$id);
+	if($this->status){
+	$custome_msg = message_display('update');
+	}else{
+	$custome_msg = message_display('sorry');	
+	}
+	$this->view_edit_jobc($id,$custome_msg);
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
+/*=======================================================
+|
+========================================================*/
+public function delete_jobc($id='')
+{
+	if(!empty($id)){
+	$this->get_return = $this->dashboards->delete(TBL_JOB_CATEGORY,'category_id',$id);
+	if ($this->get_return == true) {
+	$custom_msg = message_display('delete');
+	$this -> view_list_jobc($custom_msg);
+	} else {
+	$custom_msg = message_display('sorry');
+	$this -> view_list_jobc($custom_msg);
+	}
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
+
+/*=======================================================
+|SUBCATEGORY 
+========================================================*/
+public function view_list_jobsc($custome_msg = '')
+{
+	if(!empty($custome_msg)){
+	$msg['msg'] = $custome_msg;
+	}
+	$this->data = $this->dashboards->select_all(TBL_JOB_SUBCATEGORY);
+	$msg['data'] = $this->data;	
+	$this->load->view('admin/list-jobsc',$msg);	
+}
+/*=======================================================
+|
+========================================================*/
+public function view_create_jobsc($custome_msg = '')
+{
+	if(!empty($custome_msg)){
+	$msg['msg'] = $custome_msg;
+	}
+	
+	$this->data = $this->dashboards->select_all(TBL_JOB_CATEGORY);
+	$msg['data'] = $this->data;	
+	$this->load->view('admin/create-jobsc',$msg);	
+}
+/*=======================================================
+|
+========================================================*/
+public function view_edit_jobsc($id='',$custom_msg = '')
+{
+	if(!empty($id)){
+	if(!empty($custom_msg)){
+	$msg['msg'] = $custom_msg;
+	}
+	$this->get_data_single = $this -> dashboards -> select_single(TBL_JOB_SUBCATEGORY,'subcategory_id',$id);
+	$msg['data'] = $this->get_data_single;
+	$this->data = $this->dashboards->select_all(TBL_JOB_CATEGORY);
+	$msg['category'] = $this->data;	
+	$this -> load -> view('admin/edit-jobsc', $msg);
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
+/*=======================================================
+|
+========================================================*/
+public function create_jobsc()
+{
+	$data = array();
+	$this->data  = $this->input->post();
+	
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	if(count($this->data) >= 1)
+	{
+	foreach($this->data as $key => $val)
+	{
+		$data[$key] = $val;
+	}
+	}
+		
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$this->status = $this->dashboards->insert(TBL_JOB_SUBCATEGORY,$data,$data['subcategory_name']);
+	if($this->status != 0){
+	$custome_msg = message_display('insert');
+	}else{
+	$custome_msg = message_display('sorry');	
+	}
+	$this->view_create_jobsc($custome_msg);
+}
+/*=======================================================
+|
+========================================================*/
+public function update_jobsc($id='')
+{
+	if(!empty($id)){
+	//$data = array();
+	$subcategory_name  = $this->input->post('subcategory_name');
+	$category_id       = $this->input->post('category_id_FK');
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$data = array(
+		"subcategory_name" => $subcategory_name,
+		"category_id_FK" => $category_id,
+	);
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	$this->status = $this->dashboards->update(TBL_JOB_SUBCATEGORY,$data,'subcategory_id',$id);
+	if($this->status){
+	$custome_msg = message_display('update');
+	}else{
+	$custome_msg = message_display('sorry');	
+	}
+	$this->view_edit_jobsc($id,$custome_msg);
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
+/*=======================================================
+|
+========================================================*/
+public function delete_jobsc($id='')
+{
+	if(!empty($id)){
+	$this->get_return = $this->dashboards->delete(TBL_JOB_SUBCATEGORY,'subcategory_id',$id);
+	if ($this->get_return == true) {
+	$custom_msg = message_display('delete');
+	$this -> view_list_jobsc($custom_msg);
+	} else {
+	$custom_msg = message_display('sorry');
+	$this -> view_list_jobsc($custom_msg);
+	}
+	}else{
+	$this->redirectToDashboard();	
+	}
+}
 
 //=======================================================
 //=+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++	 

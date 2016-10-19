@@ -20,7 +20,7 @@
 <li class="nav-item <?php if(($page_name == 'create-iwtw') || ($page_name == 'list-iwtw') || ($page_name == 'edit-iwtw')){ echo 'active open'; } ?>">
 <a href="javascript:;" class="nav-link nav-toggle">
 <i class="fa fa-chevron-circle-down"></i>
-<span class="title">I Want To Work</span>
+<span class="title">I Want To Work Level</span>
 <span class="arrow"></span>
 </a>
 <ul class="sub-menu">
@@ -39,7 +39,7 @@
 <li class="nav-item <?php if(($page_name == 'create-icw') || ($page_name == 'list-icw') || ($page_name == 'edit-icw')){ echo 'active open'; } ?>">
 <a href="javascript:;" class="nav-link nav-toggle">
 <i class="fa fa-chevron-circle-down"></i>
-<span class="title">I Can Work</span>
+<span class="title">I Can Work Level</span>
 <span class="arrow"></span>
 </a>
 <ul class="sub-menu">
@@ -58,7 +58,7 @@
 <li class="nav-item <?php if(($page_name == 'create-iwlte') || ($page_name == 'list-iwlte') || ($page_name == 'edit-iwlte')){ echo 'active open'; } ?>">
 <a href="javascript:;" class="nav-link nav-toggle">
 <i class="fa fa-chevron-circle-down"></i>
-<span class="title">I Like To Earn</span>
+<span class="title">I Like To Earn Level</span>
 <span class="arrow"></span>
 </a>
 <ul class="sub-menu">
@@ -115,7 +115,7 @@
 <li class="nav-item <?php if(($page_name == 'create-title') || ($page_name == 'list-title') || ($page_name == 'edit-title')){ echo 'active open'; } ?>">
 <a href="javascript:;" class="nav-link nav-toggle">
 <i class="fa fa-chevron-circle-down"></i>
-<span class="title">Tile Title</span>
+<span class="title">Title Level</span>
 <span class="arrow"></span>
 </a>
 <ul class="sub-menu">
@@ -127,6 +127,44 @@
 <li class="nav-item <?php if(($page_name == 'create-title') ){ echo 'active open'; } ?>">
 <a href="<?php _e(site_url('dashboard/view-create-title')); ?>" class="nav-link ">
 <span class="title">Create Dropdown</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="nav-item <?php if(($page_name == 'create-jobc') || ($page_name == 'list-jobc') || ($page_name == 'edit-jobc')){ echo 'active open'; } ?>">
+<a href="javascript:;" class="nav-link nav-toggle">
+<i class="fa fa-chevron-circle-down"></i>
+<span class="title">Job Category</span>
+<span class="arrow"></span>
+</a>
+<ul class="sub-menu">
+<li class="nav-item <?php if(($page_name == 'list-jobc') ){ echo 'active open'; } ?>">
+<a href="<?php _e(site_url('dashboard/view-list-jobc')); ?>" class="nav-link ">
+<span class="title">List Category</span>
+</a>
+</li>
+<li class="nav-item <?php if(($page_name == 'create-jobc') ){ echo 'active open'; } ?>">
+<a href="<?php _e(site_url('dashboard/view-create-jobc')); ?>" class="nav-link ">
+<span class="title">Create Category</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="nav-item <?php if(($page_name == 'create-jobsc') || ($page_name == 'list-jobsc') || ($page_name == 'edit-jobsc')){ echo 'active open'; } ?>">
+<a href="javascript:;" class="nav-link nav-toggle">
+<i class="fa fa-chevron-circle-down"></i>
+<span class="title">Job Subcategory</span>
+<span class="arrow"></span>
+</a>
+<ul class="sub-menu">
+<li class="nav-item <?php if(($page_name == 'list-jobsc') ){ echo 'active open'; } ?>">
+<a href="<?php _e(site_url('dashboard/view-list-jobsc')); ?>" class="nav-link ">
+<span class="title">List Subcategory</span>
+</a>
+</li>
+<li class="nav-item <?php if(($page_name == 'create-jobsc') ){ echo 'active open'; } ?>">
+<a href="<?php _e(site_url('dashboard/view-create-jobsc')); ?>" class="nav-link ">
+<span class="title">Create Subcategory</span>
 </a>
 </li>
 </ul>

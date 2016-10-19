@@ -46,6 +46,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('ADMIN_TITLE',   'WORKO2 ADMIN');
 define('SITE_TITLE',    'WORKO2');
 //================================================================
+
 define('TBL_ADMIN',                    'work_admin');
 define('TBL_SETTING',                  'work_setting');
 define('TBL_PAGE',                     'work_page');
@@ -63,6 +64,10 @@ define('TBL_LIKE_EARN',                'work_like_earn');
 define('TBL_LIKE_LEVEL',               'work_language_level');
 define('TBL_EXP_LEVEL',                'work_expreance_level');
 define('TBL_TITLE',                    'work_title');
+
+define('TBL_GIG',          			   'work_gig');
+define('TBL_JOB_CATEGORY',             'work_gig_category');
+define('TBL_JOB_SUBCATEGORY',          'work_gig_subcategory');
 
 
 /* End of file constants.php */
