@@ -19,7 +19,8 @@ public function __construct()
 	$this->load->model('sellers');	
 	$this->load->model('dashboards');	
 }
-
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */	
 public function is_login()
 {
 	$session_details = $this->session->all_userdata();
@@ -29,7 +30,6 @@ public function is_login()
 	return true;	
 	}	
 }
-
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */	
 public function index()
@@ -431,8 +431,13 @@ public function job_one($id= '')
 	$this->status = $this->dashboards->update(TBL_GIG,$data,'gig_id',$id);
 	$return_id = $id;
 	}else{
+	$get_return = $this->sellers->checked_gig_one($data);
+	if($get_return == false){
 	$this->status = $this->dashboards->insert(TBL_GIG,$data,$data['gig_title']);
 	$return_id = $this->status;
+	}else{
+	$return_id = $get_return[0]['gig_id'];	
+	}
 	}
 	if($this->status != 0){
 	$return_id = $return_id;
@@ -446,12 +451,48 @@ public function job_one($id= '')
 public function seller_view_job_two($id='')
 {
 	if($this->is_login()){
-	$msg['id'] = $id;			
+	$msg['id'] = $id;	
+	$msg['data'] = $this -> dashboards -> select_single(TBL_GIG_PRICING,'gig_id',$id);		
 	$this->load->view('seller/job_two',$msg);
 	}else{
 	$this->index();		
 	}	
 }
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function job_two()
+{
+	$get_id = $this->input->post('gig_id');
+	$get_title = $this->input->post('package_name');
+	$get_description = $this->input->post('package_description');
+	$get_days = $this->input->post('package_revisions');
+	$get_price = $this->input->post('package_price');
+	for($i = 0; $i < count($get_title); $i++) {
+	if((!empty($get_title[$i])) and (!empty($get_title[$i]))){	
+	$data[] = array(
+		'gig_id' => $get_id,
+		'package_name' => $get_title[$i],
+		'package_description' => $get_description[$i],
+		'package_revisions' => $get_days[$i],
+		'package_price' => $get_price[$i],
+	);
+	}
+	}
+	$this->dashboards->update_batch_data(TBL_GIG_PRICING,$data,'gig_id',$get_id);
+	$this->seller_view_job_three($get_id);
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function seller_view_job_three($id='')
+{
+	if($this->is_login()){
+	$msg['id'] = $id;			
+	$this->load->view('seller/job_three',$msg);
+	}else{
+	$this->index();		
+	}	
+}
+
 /* ========================================================================================= */	
 /* ========================================================================================= */	
 }

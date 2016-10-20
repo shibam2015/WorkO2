@@ -2007,7 +2007,7 @@ span.card {
 }
 .bor {
 	padding: 8px!important;
-	height:40px !important;
+	height: 40px !important;
 }
 .cancel-btn-2 {
 	font-size: 22px;
@@ -2145,4 +2145,81 @@ span.card {
 }
 .des-holder-table .table-icon ul li .fa {
 	margin-right: 0px;
+}
+/*By Dhiman*/
+.scope-table {
+}
+.scope-table table th {
+	width: 25%;
+	border-bottom: none !important;
+	padding: 10px !important;
+	font-size: 16px;
+	line-height: 25px;
+}
+.scope-table table tbody tr td {
+	width: 25%;
+	padding: 0;
+}
+.name-area {
+	width: 100%;
+	height: 60px;
+	border: none;
+	padding: 5px 10px;
+	margin-bottom: -5px;
+}
+.des-area {
+	width: 100%;
+	height: 100px;
+	border: none;
+	padding: 5px 10px;
+	margin-bottom: -5px;
+}
+.pricing-select {
+	width: 100%;
+	height: 45px;
+}
+.pricing-select select {
+	width: 100%;
+	height: 100%;
+	border: none;
+	padding: 10px;
+}
+.price-td {
+	padding: 10px !important;
+	font-size: 16px;
+	line-height: 25px;
+}
+.extra-check {
+	width: 100%;
+	margin-top: 20px;
+	border: 1px solid #e1e1e1;
+	border-bottom: none;
+}
+.single-check {
+	width: 100%;
+	padding: 15px;
+	border-bottom: 1px solid #e1e1e1;
+}
+.single-check input[type=checkbox] {
+	float: left;
+	display: none;
+}
+.single-check label {
+	margin: 0;
+	font-size: 16px;
+	line-height: 25px;
+	font-weight: 400;
+}
+.single-check label:before {
+	width: 15px;
+	height: 25px;
+	content: "";
+	float: left;
+	background: url(../icon/uncheck.png) no-repeat center;
+	background-size: contain;
+	margin-right: 10px;
+}
+.single-check input[type=checkbox]:checked + label:before {
+	background: url(../icon/check.png) no-repeat center;
+	background-size: contain;
 }

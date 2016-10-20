@@ -871,4 +871,13 @@ $(function(){
 	});		
 	})	
 })	
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$(function(){
+$( "#desc_job" ).focus(function() {
+  $(this).animate({height:'300'});
+});
+$("#desc_job").blur(function(){
+    $(this).animate({height:'100'});
+}); 
+})
 </script>

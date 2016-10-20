@@ -66,6 +66,7 @@ define('TBL_EXP_LEVEL',                'work_expreance_level');
 define('TBL_TITLE',                    'work_title');
 
 define('TBL_GIG',          			   'work_gig');
+define('TBL_GIG_PRICING',              'work_gig_pricing');
 define('TBL_JOB_CATEGORY',             'work_gig_category');
 define('TBL_JOB_SUBCATEGORY',          'work_gig_subcategory');
 
