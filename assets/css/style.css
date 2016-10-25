@@ -2223,3 +2223,23 @@ span.card {
 	background: url(../icon/check.png) no-repeat center;
 	background-size: contain;
 }
+.table-sec .table-data2 {
+	float: left;
+}
+.table-header {
+	width: 100%;
+	display: table;
+}
+.table-sec .header-col {
+	width: 40%;
+}
+.table-sec .data-col {
+	width: 20%;
+}
+.table-row1 {
+	width: 100%;
+	display: table;
+}
+.table-icon ul li a i {
+	color: #333 !important;
+}

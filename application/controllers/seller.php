@@ -167,10 +167,253 @@ public function update_language()
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
+public function data_calling()
+{
+	$session_details = $this->session->all_userdata();	
+	$get_type = $this->input->post('type');
+	if($get_type == 'Language')
+	{
+	$languages = array();	
+	$languages = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+    if(count($languages) > 0){
+    foreach($languages as $language){	
+    ?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
+    <div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <?php
+    }
+    }
+	}else{
+	if($get_type == 'Skill'){
+    $skills = array();	
+	$skills = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	if(count($skills) > 0){
+	foreach($skills as $skill){	
+    ?>
+    <div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
+    <div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <?php
+    }
+    }
+	}else{
+	if($get_type == 'Education'){
+	$educations = array();	
+	$educations = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	if(count($educations) > 0){
+	foreach($educations as $education){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $education['seller_edu_degree']; ?></div>
+    <div class="table-data2 header-col"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+	}else{
+	if($get_type == 'Certificate'){
+	$certificates = array();	
+	$certificates = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);	
+	if(count($certificates) > 0){
+	foreach($certificates as $certificate){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $certificate['seller_cerified']; ?></div>
+    <div class="table-data2 header-col"><?php echo $certificate['seller_cerified_year']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+    }else{
+	if($get_type == 'Portfolio'){
+	$portfolios = array();	
+	$portfolios = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);		
+	if(count($portfolios) > 0){
+	foreach($portfolios as $portfolio){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web']; ?></div>
+    <div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web_link']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+	}
+	}
+	}
+	}	
+	}
+	
+}
+public function data_fetch()
+{
+	$session_details = $this->session->all_userdata();	
+	$get_type = $this->input->post('type');
+	if($get_type == 'Language')
+	{
+	$languages = array();	
+	$languages = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+    if(count($languages) > 0){
+    foreach($languages as $language){	
+    ?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
+    <div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language2','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <?php
+    }
+    }
+	}else{
+	if($get_type == 'Skill'){
+    $skills = array();	
+	$skills = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	if(count($skills) > 0){
+	foreach($skills as $skill){	
+    ?>
+    <div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
+    <div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill2','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+    </ul>
+    </div>
+    </div>
+    </div>
+    <?php
+    }
+    }
+	}else{
+	if($get_type == 'Education'){
+	$educations = array();	
+	$educations = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	if(count($educations) > 0){
+	foreach($educations as $education){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $education['seller_edu_degree']; ?></div>
+    <div class="table-data2 header-col"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education2','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+	}else{
+	if($get_type == 'Certificate'){
+	$certificates = array();	
+	$certificates = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);	
+	if(count($certificates) > 0){
+	foreach($certificates as $certificate){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $certificate['seller_cerified']; ?></div>
+    <div class="table-data2 header-col"><?php echo $certificate['seller_cerified_year']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate2','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+    }else{
+	if($get_type == 'Portfolio'){
+	$portfolios = array();	
+	$portfolios = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);		
+	if(count($portfolios) > 0){
+	foreach($portfolios as $portfolio){	
+	?>
+	<div class="table-row1">
+    <div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web']; ?></div>
+    <div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web_link']; ?></div>
+    <div class="table-data2 data-col">
+    <div class="table-icon">
+    <ul>
+    <li><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio2','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+    <li><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+	}
+	}
+	}
+	}	
+	}
+	
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
 public function update_skill()
 {
 	$get_fild_id = $this->input->post('fild_id');
-	
 	$data = array (
 		"user_id" => $this->input->post('id'),
 		"seller_skill" =>$this->input->post('seller_skill'),
@@ -491,6 +734,28 @@ public function seller_view_job_three($id='')
 	}else{
 	$this->index();		
 	}	
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function job_three()
+{
+	$data = array();
+	$this->data  = $this->input->post();
+	//GENERATING THE DYNAMIC ARRAY FROM THE POST 
+	if(count($this->data) >= 1)
+	{
+	foreach($this->data as $key => $val)
+	{
+		$data[$key] = $val;
+	}
+	}
+	$this->status = $this->dashboards->insert(TBL_GIG_FAQ,$data,$data['gig_id']);
+	if($this->status != 0){
+	echo 'Success';	
+	}else{
+	echo 'Fail';	
+	}	
+	
 }
 
 /* ========================================================================================= */	

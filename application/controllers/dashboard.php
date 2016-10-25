@@ -2,7 +2,6 @@
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Dashboard extends CI_Controller 
 {
-	
 //=============================================================
 private $status = '';
 private $data = '';

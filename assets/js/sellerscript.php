@@ -18,28 +18,18 @@ $("#btn1").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Language',success: function(result){
+	$('#lang').html(' ');
+	$("#lang").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Language',success: function(result){
+	$('#lang').html(' ');	
+	$("#lang").html(result);
+    }
 	});
 	//++++++++++++++++++
 	} else{
@@ -67,28 +57,18 @@ $("#btn2").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Skill Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Skill',success: function(result){
+	$('#skill').html(' ');	
+	$("#skill").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Skill',success: function(result){
+	$('#skill').html(' ');	
+	$("#skill").html(result);
+    }
 	});
 	//++++++++++++++++++
 	} else{
@@ -145,28 +125,18 @@ $("#btn3").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Education Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Education',success: function(result){
+	$('#edu').html(' ');		
+	$("#edu").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Education',success: function(result){
+	$('#edu').html(' ');	
+	$("#edu").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else{
@@ -213,28 +183,18 @@ $("#btn4").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Certification Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Certificate',success: function(result){
+	$("#certificate").html(' ');
+	$("#certificate").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Certificate',success: function(result){
+	$("#certificate").html(' ');	
+	$("#certificate").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else{
@@ -272,28 +232,18 @@ $("#btn5").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Portfolio or Website Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Portfolio',success: function(result){
+	$("#portfolio").html(' ');
+	$("#portfolio").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type=Portfolio',success: function(result){
+	$("#portfolio").html(' ');
+	$("#portfolio").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else{
@@ -326,28 +276,18 @@ $("#btn15").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Language',success: function(result){
+	$('#lang').html(' ');
+	$("#lang").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Language Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Language',success: function(result){
+	$('#lang').html(' ');
+	$("#lang").html(result);
+    }
 	});
 	//++++++++++++++++++
 	} else{
@@ -408,36 +348,18 @@ $("#btn8").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Skill Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-3").hide('fast',function(){
-	$(".show-3").show('fast',function(){
-	location.reload();		
-	});	
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Skill',success: function(result){
+	$('#skill').html(' ');
+	$("#skill").html(result);
+    }
 	});
 	//++++++++++++++++++
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Skill Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-3").hide('fast',function(){
-	$(".show-3").show('fast',function(){
-	location.reload();	
-	});
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Skill',success: function(result){
+	$('#skill').html(' ');
+	$("#skill").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else{
@@ -494,36 +416,18 @@ $("#btn9").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Education Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-4").hide('fast',function(){
-	$(".show-4").show('fast',function(){
-	location.reload();		
-	});	
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Education',success: function(result){
+	$('#edu').html(' ');
+	$("#edu").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Education Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-4").hide('fast',function(){
-	$(".show-4").show('fast',function(){
-	location.reload();	
-	});
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Education',success: function(result){
+	$('#edu').html(' ');
+	$("#edu").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else{
@@ -571,36 +475,18 @@ $("#btn10").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Certification Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-5").hide('fast',function(){
-	$(".show-5").show('fast',function(){
-	location.reload();	
-	});	
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Certificate',success: function(result){
+	$('#certificate').html(' ');
+	$("#certificate").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Certification Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-5").hide('fast',function(){
-	$(".show-5").show('fast',function(){
-	location.reload();	
-	});
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Certificate',success: function(result){
+	$('#certificate').html(' ');
+	$("#certificate").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else{
@@ -640,36 +526,18 @@ $("#btn11").click(function(){
 	success: function (res) {
 	if(res == 'Success'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Portfolio or Website Has Been Added",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-6").hide('fast',function(){
-	$(".show-6").show('fast',function(){
-	location.reload();	
-	});	
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Portfolio',success: function(result){
+	$('#portfolio').html(' ');
+	$("#portfolio").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else if(res == 'Updated'){
 	//+++++++++++++++++	
-	swal({   
-	title: "The Portfolio Has Been Updated",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	$(".des-area-6").hide('fast',function(){
-	$(".show-6").show('fast',function(){
-	location.reload();	
-	});
-	});
+	$.ajax({url: "<?php echo site_url('seller/data_fetch'); ?>",type: "POST",data: 'type=Portfolio',success: function(result){
+	$('#portfolio').html(' ');
+	$("#portfolio").html(result);
+    }
 	});
 	//++++++++++++++++++	
 	}else{
@@ -693,7 +561,7 @@ var deleteData = function(id,type){
 	showCancelButton: true,   
 	confirmButtonColor: "#DD6B55",   
 	confirmButtonText: "Yes, delete it!",   
-	closeOnConfirm: false 
+	closeOnConfirm: true 
 	}, function(){   
 	jQuery.ajax({
 	type: "POST",
@@ -704,18 +572,30 @@ var deleteData = function(id,type){
 	},
 	success: function (res) {
 	if(res == 'Success'){
-	//+++++++++++++++++	
-	swal({   
-	title: "Your data has been deleted.",  
-	type: "success",   
-	showCancelButton: false,   
-	confirmButtonColor: "#8CD4F5",   
-	confirmButtonText: "OK",   
-	closeOnConfirm: true 
-	}, function(){   
-	location.reload();
+	$.ajax({url: "<?php echo site_url('seller/data_calling'); ?>",type: "POST",data: 'type='+type,success: function(result){
+	
+	if(type == 'Language'){	
+	$("#lang").html(result);
+	}
+	
+	if(type == 'Skill'){	
+	$("#skill").html(result);
+	}
+	
+	if(type == 'Education'){	
+	$("#edu").html(result);
+	}
+	
+	if(type == 'Certificate'){	
+	$("#certificate").html(result);
+	}
+	
+	if(type == 'Portfolio'){	
+	$("#portfolio").html(result);
+	}
+	
+	}
 	});
-	//++++++++++++++++++	
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	} 			
@@ -845,14 +725,14 @@ var editDataPortfolio = function(id,type,data1,data2){
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++	
 //COUNT CHARACTERS IN TEXTAREA
-function countChar(val){
+var countChar = function(val){
 	var len = val.value.length;
 	if (len >= 300) {
 	val.value = val.value.substring(0, 300);
 	} else {
 	$('#charNum').text(300 - len);
 	}
-};
+}
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $(function(){
 	$('#category_id').change(function(){
@@ -879,5 +759,29 @@ $( "#desc_job" ).focus(function() {
 $("#desc_job").blur(function(){
     $(this).animate({height:'100'});
 }); 
+})
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$(function(){
+$('#add_faq').click(function(){
+	var gig_id       = $('#gig_id').val();
+	var faq_question = $('#faq_question').val();
+	var faq_ans      = $('#faq_ans').val();
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/job_three'); ?>",
+	data: { 
+		gig_id: gig_id, 
+		faq_question:faq_question,
+		faq_ans:faq_ans
+	},
+	success: function (res) {
+	if(res == 'Success'){
+	sweetAlert("Success", "The faq is created!");		
+	}else{
+	sweetAlert("Oops...", "Something went wrong!");	
+	}		
+	}
+	});		
+})	
 })
 </script>

@@ -144,7 +144,38 @@ foreach($lang_l as $lang){
 </div>
 <div class="dse-holder">
 <div class="des-holder-table">
-<table style="width:100%">
+
+<div class="table-sec">
+<div class="table-header">
+<div class="table-data2 header-col header-color">Language</div>
+<div class="table-data2 header-col header-color">Level</div>
+<div class="table-data2 data-col"></div>
+</div>
+<div id="lang">    
+<?php
+if(count($languages) > 0){
+foreach($languages as $language){	
+?>
+<div class="table-row1">
+<div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
+<div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+<div class="table-data2 data-col">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataLanguage('<?php echo $language['id']; ?>','Language2','<?php echo $language['seller_language']; ?>','<?php echo $language['seller_language_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $language['id']; ?>','Language')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+<?php
+}
+}
+?>
+</div>
+</div>
+
+<?php /*?><table style="width:100%">
 <tr class="table-header">
 <td class="table-data2 header-color">Language</td>
 <td class="table-data2 header-color">Level</td>
@@ -170,7 +201,7 @@ foreach($languages as $language){
 }
 }
 ?>  
-</table>
+</table><?php */?>
 </div>
 <div class="clearfix"></div>
 </div>
@@ -209,7 +240,36 @@ foreach($exp_l as $exp){
 </div>
 <div class="dse-holder">
 <div class="des-holder-table">
-<table style="width:100%">
+<div class="table-sec">
+<div class="table-header">
+<div class="table-data2 header-col header-color">Skill</div>
+<div class="table-data2 header-col header-color">Level</div>
+<div class="table-data2 data-col"></div>
+</div>
+<div id="skill">    
+<?php
+if(count($skills) > 0){
+foreach($skills as $skill){	
+?>
+<div class="table-row1">
+<div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
+<div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+<div class="table-data2 data-col">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataSkill('<?php echo $skill['id']; ?>','Skill2','<?php echo $skill['seller_skill']; ?>','<?php echo $skill['seller_skill_level']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $skill['id']; ?>','Skill')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+</ul>
+</div>
+</div>
+</div>
+<?php
+}
+}
+?>
+</div>
+</div>
+<?php /*?><table style="width:100%">
 <tr class="table-header">
 <td class="table-data2 header-color">Skill</td>
 <td class="table-data2 header-color">Level</td>
@@ -235,7 +295,7 @@ foreach($skills as $skill){
 }
 }
 ?>  
-</table>
+</table><?php */?>
 </div>
 <div class="clearfix"></div>
 </div>
@@ -314,7 +374,36 @@ for($y_2=date('Y');$y_2>=1960; $y_2--){
 </div>
 <div class="dse-holder">
 <div class="des-holder-table">
-<table style="width:100%">
+<div class="table-sec">
+<div class="table-header">
+<div class="table-data2 header-col header-color">Degree</div>
+<div class="table-data2 header-col header-color">Year</div>
+<div class="table-data2 data-col"></div>
+</div>
+<div id="edu">    
+<?php
+if(count($educations) > 0){
+foreach($educations as $education){	
+?>
+<div class="table-row1">
+<div class="table-data2 header-col"><?php echo $education['seller_edu_degree']; ?></div>
+<div class="table-data2 header-col"><?php echo $education['seller_edu_from'].'-'.$education['seller_edu_to']; ?></div>
+<div class="table-data2 data-col">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataEducation('<?php echo $education['id']; ?>','Education2','<?php echo $education['seller_edu_country']; ?>','<?php echo $education['seller_edu_collage_name']; ?>','<?php echo $education['seller_edu_title']; ?>','<?php echo $education['seller_edu_degree']; ?>','<?php echo $education['seller_edu_from']; ?>','<?php echo $education['seller_edu_to']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $education['id']; ?>','Education')"><i class="fa fa-trash" aria-hidden="true"></i></a><li>
+</ul>
+</div>
+</div>
+</div>
+<?php
+}
+}
+?>
+</div>
+</div>
+<?php /*?><table style="width:100%">
 <tr class="table-header">
 <td class="table-data2 header-color">Degree</td>
 <td class="table-data2 header-color">Year</td>
@@ -340,7 +429,7 @@ foreach($educations as $education){
 }
 }
 ?> 
-</table>
+</table><?php */?>
 </div>
 <div class="clearfix"></div>
 </div>
@@ -381,7 +470,36 @@ for($y_3=date('Y');$y_3>=1960; $y_3--){
 </div>
 <div class="dse-holder">
 <div class="des-holder-table">
-<table style="width:100%">
+<div class="table-sec">
+<div class="table-header">
+<div class="table-data2 header-col header-color">Certificate Or Award</div>
+<div class="table-data2 header-col header-color">Year</div>
+<div class="table-data2 data-col"></div>
+</div>
+<div id="certificate">    
+<?php
+if(count($certificates) > 0){
+foreach($certificates as $certificate){	
+?>
+<div class="table-row1">
+<div class="table-data2 header-col"><?php echo $certificate['seller_cerified']; ?></div>
+<div class="table-data2 header-col"><?php echo $certificate['seller_cerified_year']; ?></div>
+<div class="table-data2 data-col">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataCertificate('<?php echo $certificate['id']; ?>','Certificate2','<?php echo $certificate['seller_cerified']; ?>','<?php echo $certificate['seller_cerified_from']; ?>','<?php echo $certificate['seller_cerified_year']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a><li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $certificate['id']; ?>','Certificate')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+<?php
+}
+}
+?>
+</div>
+</div>
+<?php /*?><table style="width:100%">
 <tr class="table-header">
 <td class="table-data2 header-color">Certificate Or Award</td>
 <td class="table-data2 header-color">Year</td>
@@ -407,7 +525,7 @@ foreach($certificates as $certificate){
 }
 }
 ?>
-</table>
+</table><?php */?>
 </div>
 <div class="clearfix"></div>
 </div>
@@ -434,7 +552,36 @@ foreach($certificates as $certificate){
 </div>
 <div class="dse-holder">
 <div class="des-holder-table">
-<table style="width:100%">
+<div class="table-sec">
+<div class="table-header">
+<div class="table-data2 header-col header-color">Description</div>
+<div class="table-data2 header-col header-color">URL</div>
+<div class="table-data2 data-col"></div>
+</div>
+<div id="portfolio">    
+<?php
+if(count($portfolios) > 0){
+foreach($portfolios as $portfolio){	
+?>
+<div class="table-row1">
+<div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web']; ?></div>
+<div class="table-data2 header-col"><?php echo $portfolio['seller_profile_web_link']; ?></div>
+<div class="table-data2 data-col">
+<div class="table-icon">
+<ul>
+<li><a href="javascript:void(0)" onClick="editDataPortfolio('<?php echo $portfolio['id']; ?>','Portfolio2','<?php echo $portfolio['seller_profile_web']; ?>','<?php echo $portfolio['seller_profile_web_link']; ?>')"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+<li><a href="javascript:void(0)" onClick="deleteData('<?php echo $portfolio['id']; ?>','Portfolio')"><i class="fa fa-trash" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+<?php
+}
+}
+?>
+</div>
+</div>
+<?php /*?><table style="width:100%">
 <tr class="table-header">
 <td class="table-data2 header-color">Description</td>
 <td class="table-data2 header-color">Url</td>
@@ -460,7 +607,7 @@ foreach($portfolios as $portfolio){
 }
 }
 ?>
-</table>
+</table><?php */?>
 </div>
 <div class="clearfix"></div>
 </div>
