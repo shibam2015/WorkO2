@@ -158,7 +158,7 @@ foreach($languages as $language){
 ?>
 <div class="table-row1">
 <div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
-<div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+<div class="table-data2 header-col"><?php echo $language['dropdown_value']; ?></div>
 <div class="table-data2 data-col">
 <div class="table-icon">
 <ul>
@@ -253,7 +253,7 @@ foreach($skills as $skill){
 ?>
 <div class="table-row1">
 <div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
-<div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+<div class="table-data2 header-col"><?php echo $skill['dropdown_value']; ?></div>
 <div class="table-data2 data-col">
 <div class="table-icon">
 <ul>

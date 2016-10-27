@@ -125,6 +125,30 @@ public function select_with_where($table_name,$fild_name,$id)
 }
 /* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
 /* ========================================================================================= */
+public function select_join_expreance_level($id)
+{
+	$this->db->select('*');
+	$this->db->from('work_expreance_level');
+	$this->db->join('work_seller_skill', 'work_expreance_level.id = work_seller_skill.seller_skill_level', 'inner');
+	$this->db->where('work_seller_skill.user_id', $id);
+	$query = $this->db->get();
+	$getData = $query->result_array();
+	return $getData;
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function select_join_language_level($id)
+{
+	$this->db->select('*');
+	$this->db->from('work_language_level');
+	$this->db->join('work_seller_language', 'work_language_level.id = work_seller_language.seller_language_level', 'inner');
+	$this->db->where('work_seller_language.user_id', $id);
+	$query = $this->db->get();
+	$getData = $query->result_array();
+	return $getData;
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
 public function checked_gig_one($data)
 {
 	$this -> db -> where('gig_title', $data['gig_title']);

@@ -38,18 +38,18 @@ public function index()
 	if(!isset($session_details['seller_login'])){
 	$this->load->view('seller/index');
 	}else{
-	$msg['data'] = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
-	$msg['languages'] = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['skills'] = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['data']         = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
+	$msg['languages']    = $this->sellers->select_join_language_level($session_details['seller_details'][0]['id']);
+	$msg['skills']       = $this->sellers->select_join_expreance_level($session_details['seller_details'][0]['id']);
+	$msg['educations']   = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
 	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['iwtw_l']  = $this->dashboards->select_all(TBL_WANT_TO_WORK);
-	$msg['icw_l']   = $this->dashboards->select_all(TBL_CAN_WORK);
-	$msg['iwlte_l'] = $this->dashboards->select_all(TBL_LIKE_EARN);
-	$msg['lang_l']  = $this->dashboards->select_all(TBL_LIKE_LEVEL);
-	$msg['exp_l']   = $this->dashboards->select_all(TBL_EXP_LEVEL);
-	$msg['title_l'] = $this->dashboards->select_all(TBL_TITLE);
+	$msg['portfolios']   = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['iwtw_l']       = $this->dashboards->select_all(TBL_WANT_TO_WORK);
+	$msg['icw_l']        = $this->dashboards->select_all(TBL_CAN_WORK);
+	$msg['iwlte_l']      = $this->dashboards->select_all(TBL_LIKE_EARN);
+	$msg['lang_l']       = $this->dashboards->select_all(TBL_LIKE_LEVEL);
+	$msg['exp_l']        = $this->dashboards->select_all(TBL_EXP_LEVEL);
+	$msg['title_l']      = $this->dashboards->select_all(TBL_TITLE);
 	$this->load->view('seller/profile',$msg);	
 	}	
 }
@@ -114,9 +114,7 @@ public function logout()
 /* ========================================================================================= */
 public function update_description()
 {
-	$data = array (
-	"seller_description" => $this->input->post('seller_description'),
-	);
+	$data = array ("seller_description" => $this->input->post('seller_description'));
 	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
@@ -128,9 +126,7 @@ public function update_description()
 /* ========================================================================================= */
 public function update_availability()
 {
-	$data = array (
-		"seller_availability" =>$this->input->post('seller_availability'),
-	);
+	$data = array ("seller_availability" =>$this->input->post('seller_availability'));
 	$this->status = $this->sellers->seller_update_profile($this->input->post('id'),$data);
 	if($this->status != false){
 	echo 'Success';
@@ -143,11 +139,10 @@ public function update_availability()
 public function update_language()
 {
 	$get_fild_id = $this->input->post('fild_id');
-	
 	$data = array (
-		"user_id" => $this->input->post('id'),
-		"seller_language" =>$this->input->post('language_name'),
-		"seller_language_level" =>$this->input->post('language_type'),
+	"user_id"               => $this->input->post('id'),
+	"seller_language"       => $this->input->post('language_name'),
+	"seller_language_level" => $this->input->post('language_type'),
 	);
 	if(($get_fild_id != 0) or ($get_fild_id != '0')){
 	$this->status = $this->sellers->seller_update_data(TBL_SELLER_LANGUAGE,$data,'id',$get_fild_id);
@@ -174,13 +169,13 @@ public function data_calling()
 	if($get_type == 'Language')
 	{
 	$languages = array();	
-	$languages = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+	$languages = $this->sellers->select_join_language_level($session_details['seller_details'][0]['id']);
     if(count($languages) > 0){
     foreach($languages as $language){	
     ?>
 	<div class="table-row1">
     <div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
-    <div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+    <div class="table-data2 header-col"><?php echo $language['dropdown_value']; ?></div>
     <div class="table-data2 data-col">
     <div class="table-icon">
     <ul>
@@ -196,13 +191,13 @@ public function data_calling()
 	}else{
 	if($get_type == 'Skill'){
     $skills = array();	
-	$skills = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	$skills = $this->sellers->select_join_expreance_level($session_details['seller_details'][0]['id']);
 	if(count($skills) > 0){
 	foreach($skills as $skill){	
     ?>
     <div class="table-row1">
     <div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
-    <div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+    <div class="table-data2 header-col"><?php echo $skill['dropdown_value']; ?></div>
     <div class="table-data2 data-col">
     <div class="table-icon">
     <ul>
@@ -286,8 +281,9 @@ public function data_calling()
 	}
 	}	
 	}
-	
 }
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
 public function data_fetch()
 {
 	$session_details = $this->session->all_userdata();	
@@ -295,13 +291,13 @@ public function data_fetch()
 	if($get_type == 'Language')
 	{
 	$languages = array();	
-	$languages = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
+	$languages = $this->sellers->select_join_language_level($session_details['seller_details'][0]['id']);
     if(count($languages) > 0){
     foreach($languages as $language){	
     ?>
 	<div class="table-row1">
     <div class="table-data2 header-col"><?php echo $language['seller_language']; ?></div>
-    <div class="table-data2 header-col"><?php echo $language['seller_language_level']; ?></div>
+    <div class="table-data2 header-col"><?php echo $language['dropdown_value']; ?></div>
     <div class="table-data2 data-col">
     <div class="table-icon">
     <ul>
@@ -317,13 +313,13 @@ public function data_fetch()
 	}else{
 	if($get_type == 'Skill'){
     $skills = array();	
-	$skills = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
+	$skills = $this->sellers->select_join_expreance_level($session_details['seller_details'][0]['id']);
 	if(count($skills) > 0){
 	foreach($skills as $skill){	
     ?>
     <div class="table-row1">
     <div class="table-data2 header-col"><?php echo $skill['seller_skill']; ?></div>
-    <div class="table-data2 header-col"><?php echo $skill['seller_skill_level']; ?></div>
+    <div class="table-data2 header-col"><?php echo $skill['dropdown_value']; ?></div>
     <div class="table-data2 data-col">
     <div class="table-icon">
     <ul>
@@ -562,19 +558,19 @@ public function delete_seller_data()
 public function seller_view_profile_two()
 {
 	if($this->is_login()){
-	$session_details = $this->session->all_userdata();		
-	$msg['data'] = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
-	$msg['languages'] = $this->sellers->select_with_where(TBL_SELLER_LANGUAGE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['skills'] = $this->sellers->select_with_where(TBL_SELLER_SKILL,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['educations'] = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['certificates'] = $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['portfolios'] = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
-	$msg['iwtw_l']  = $this->dashboards->select_all(TBL_WANT_TO_WORK);
-	$msg['icw_l']   = $this->dashboards->select_all(TBL_CAN_WORK);
-	$msg['iwlte_l'] = $this->dashboards->select_all(TBL_LIKE_EARN);
-	$msg['lang_l']  = $this->dashboards->select_all(TBL_LIKE_LEVEL);
-	$msg['exp_l']   = $this->dashboards->select_all(TBL_EXP_LEVEL);
-	$msg['title_l'] = $this->dashboards->select_all(TBL_TITLE);
+	$session_details    = $this->session->all_userdata();		
+	$msg['data']        = $this->sellers->get_seller_details($session_details['seller_details'][0]['id']);	
+	$msg['languages']   = $this->sellers->select_join_language_level($session_details['seller_details'][0]['id']);
+	$msg['skills']      = $this->sellers->select_join_expreance_level($session_details['seller_details'][0]['id']);
+	$msg['educations']  = $this->sellers->select_with_where(TBL_SELLER_EDUCATION,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['certificates']= $this->sellers->select_with_where(TBL_SELLER_CERTIFICATE,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['portfolios']  = $this->sellers->select_with_where(TBL_SELLER_PORTFOLIO,'user_id',$session_details['seller_details'][0]['id']);
+	$msg['iwtw_l']      = $this->dashboards->select_all(TBL_WANT_TO_WORK);
+	$msg['icw_l']       = $this->dashboards->select_all(TBL_CAN_WORK);
+	$msg['iwlte_l']     = $this->dashboards->select_all(TBL_LIKE_EARN);
+	$msg['lang_l']      = $this->dashboards->select_all(TBL_LIKE_LEVEL);
+	$msg['exp_l']       = $this->dashboards->select_all(TBL_EXP_LEVEL);
+	$msg['title_l']     = $this->dashboards->select_all(TBL_TITLE);
 	$this->load->view('seller/profile_2',$msg);	
 	}else{
 	$this->index();		

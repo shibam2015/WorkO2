@@ -1,7 +1,6 @@
 <?php
 // THE MESSAGE HELPER SECTION 
 function message_display($msgKey){
-		
 	$array_msg = array(
 			
 			"invalid-login"           => 'Wrong username and password',
@@ -15,14 +14,12 @@ function message_display($msgKey){
 			"user-created"            => 'The user successfully created',
 			"old-password-not-match"  => 'Old Password did not match',
 	);	
-	
 	foreach($array_msg as $key=>$value){
 	if($key == $msgKey){
 	$msgData = $value;
 	break;		
 	}
 	}
-	
 	return $msgData;
 
 }

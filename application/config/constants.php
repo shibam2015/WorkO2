@@ -46,7 +46,6 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('ADMIN_TITLE',   'WORKO2 ADMIN');
 define('SITE_TITLE',    'WORKO2');
 //================================================================
-
 define('TBL_ADMIN',                    'work_admin');
 define('TBL_SETTING',                  'work_setting');
 define('TBL_PAGE',                     'work_page');
@@ -57,14 +56,14 @@ define('TBL_SELLER_EDUCATION',         'work_seller_education');
 define('TBL_SELLER_CERTIFICATE',       'work_seller_certification');
 define('TBL_SELLER_PORTFOLIO',         'work_seller_portfolio');
 define('TBL_SELLER_LANGUAGE',          'work_seller_language');
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 define('TBL_WANT_TO_WORK',             'work_want_to_work');
 define('TBL_CAN_WORK',                 'work_can_work');
 define('TBL_LIKE_EARN',                'work_like_earn');
 define('TBL_LIKE_LEVEL',               'work_language_level');
 define('TBL_EXP_LEVEL',                'work_expreance_level');
 define('TBL_TITLE',                    'work_title');
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 define('TBL_GIG',          			   'work_gig');
 define('TBL_GIG_FAQ',                  'work_gig_faq');
 define('TBL_GIG_PRICING',              'work_gig_pricing');

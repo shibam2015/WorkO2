@@ -6,9 +6,9 @@ class Admin extends CI_Controller
 //=============================================================
 private $get_admin_username = '';
 private $get_admin_password = '';
-private $status = '';
 private $session_details = ''; 
 private $message = '';
+private $status = '';
 //=============================================================
 
 /*=======================================================
