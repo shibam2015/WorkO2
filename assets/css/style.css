@@ -2243,3 +2243,27 @@ span.card {
 .table-icon ul li a i {
 	color: #333 !important;
 }
+.seller-pricing h1 a, .seller-form-holder a {
+	cursor: pointer;
+}
+.seller-pricing h1 .add-faq {
+	float: right;
+	font-size: 16px;
+	line-height: 30px;
+	font-weight: 700;
+	color: #000 !important;
+}
+.seller-pricing-area .panel-default > .panel-heading {
+	padding: 0;
+}
+.seller-pricing-area .panel-default > .panel-heading a {
+	width: 100%;
+	display: block;
+	padding: 10px;
+	color: #000 !important;
+	font-size: 18px;
+	text-decoration: none !important;
+}
+.faq-seller {
+	margin-top: 20px;
+}

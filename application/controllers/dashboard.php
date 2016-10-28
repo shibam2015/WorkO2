@@ -19,7 +19,7 @@ public function __construct()
 	
 	//__LODING THE MODEL
 	$this->load->model('dashboards');	
-	
+	//==================================================================================================
 	$this->session_details = $this->session->all_userdata();
 	if(!isset($this->session_details['admin_login']) and $this->session_details['admin_login'] != 'YES'){
 	redirect('admin');

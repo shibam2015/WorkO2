@@ -766,6 +766,7 @@ $('#add_faq').click(function(){
 	var gig_id       = $('#gig_id').val();
 	var faq_question = $('#faq_question').val();
 	var faq_ans      = $('#faq_ans').val();
+	if(faq_question != '' && faq_ans != '' ){
 	jQuery.ajax({
 	type: "POST",
 	url: "<?php echo site_url('seller/job_three'); ?>",
@@ -776,12 +777,25 @@ $('#add_faq').click(function(){
 	},
 	success: function (res) {
 	if(res == 'Success'){
-	sweetAlert("Success", "The faq is created!");		
+	jQuery.ajax({
+	type: "POST",
+	url: "<?php echo site_url('seller/job_three_faq'); ?>",
+	data: { 
+		gig_id: gig_id, 
+	},
+	success: function (res) {
+	$('#accordion').html(' ');
+	$('#accordion').html(res)
+	}
+	});			
 	}else{
 	sweetAlert("Oops...", "Something went wrong!");	
 	}		
 	}
 	});		
+	}else{
+	sweetAlert("Oops...", "Filds are required!","error");		
+	}
 })	
 })
 </script>

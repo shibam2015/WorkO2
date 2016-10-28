@@ -709,11 +709,11 @@ public function job_two()
 	for($i = 0; $i < count($get_title); $i++) {
 	if((!empty($get_title[$i])) and (!empty($get_title[$i]))){	
 	$data[] = array(
-		'gig_id' => $get_id,
-		'package_name' => $get_title[$i],
-		'package_description' => $get_description[$i],
-		'package_revisions' => $get_days[$i],
-		'package_price' => $get_price[$i],
+	'gig_id' => $get_id,
+	'package_name' => $get_title[$i],
+	'package_description' => $get_description[$i],
+	'package_revisions' => $get_days[$i],
+	'package_price' => $get_price[$i],
 	);
 	}
 	}
@@ -725,7 +725,8 @@ public function job_two()
 public function seller_view_job_three($id='')
 {
 	if($this->is_login()){
-	$msg['id'] = $id;			
+	$msg['id'] = $id;	
+	$msg['faqs'] = $this->sellers->select_with_where(TBL_GIG_FAQ,'gig_id',$id);		
 	$this->load->view('seller/job_three',$msg);
 	}else{
 	$this->index();		
@@ -754,6 +755,39 @@ public function job_three()
 	
 }
 
+public function job_three_faq()
+{
+	$gig_id = $this->input->post('gig_id');
+	$faqs = array();	
+	$faqs = $this->sellers->select_with_where(TBL_GIG_FAQ,'gig_id',$gig_id);	
+	if(count($faqs) > 0){
+	foreach($faqs as $faq){	
+	?>
+    <div class="panel panel-default">
+    <div class="panel-heading">
+    <a data-toggle="collapse" href="#collapse<?php echo $faq['id']; ?>"><?php echo $faq['faq_question']; ?></a>
+    </div>
+    <div id="collapse<?php echo $faq['id']; ?>" class="panel-collapse collapse">
+    <div class="panel-body">
+    <p><?php echo $faq['faq_ans']; ?></p>
+    </div>
+    </div>
+    </div>
+	<?php
+	}
+	}
+}
+/* ==+++++++++++++++++++++++++++++++++++++++++++++++== */
+/* ========================================================================================= */
+public function seller_view_job_four($id='')
+{
+	if($this->is_login()){
+	$msg['id'] = $id;	
+	$this->load->view('seller/job_four',$msg);
+	}else{
+	$this->index();		
+	}	
+}
 /* ========================================================================================= */	
 /* ========================================================================================= */	
 }
